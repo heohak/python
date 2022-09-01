@@ -9,8 +9,6 @@ How many times to repeat: 3
 Hello world! Hello world! Hello world!
 
 """
-greeting = "Hello"
-print(greeting)
 command1 = input("Enter a greeting: ")
 command2 = input("Enter a recipient: ")
 command3 = input("How many times to repeat: ")
