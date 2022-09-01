@@ -9,9 +9,6 @@ I love to code
 And so will you!
 
 """
-color = "red"
-objects = "violets"
-activity = "code"
 
 color = input("Which color are roses? ")
 objects = input("Which flowers are blue? ")
