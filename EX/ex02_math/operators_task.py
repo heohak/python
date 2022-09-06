@@ -48,18 +48,24 @@ def second_less_or_equal(x: int, y: int) -> int:
     """If y is less or equal than x then return True. If not then return False."""
     if y <= x:
         return True
+    else:
+        return False
 
 
 def x_is_y(x: int, y: int) -> int:
     """If x value is the same as y value then return True. If not then return False."""
     if x == y:
         return True
+    else:
+        return False
 
 
 def x_is_not_y(x: int, y: int) -> int:
     """If x value is not the same as y value then return True. If not then return False."""
     if x != y:
         return True
+    else:
+        return False
 
 
 def if_else(a: int, b: int, c: int, d: int):
