@@ -32,7 +32,7 @@ def school_pressure(ects: int, weeks: int) -> float:
     if weeks == 0:
         return -1
     ects_hours = ects * 26
-    calculation = ects_hours // weeks
+    calculation = ects_hours / weeks
     if calculation > 168:
         return -1
     return calculation
