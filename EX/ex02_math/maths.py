@@ -1,5 +1,4 @@
 """Math."""
-from fractions import Fraction
 
 
 def average(a: int, b: int, c: int, d: int) -> float:
@@ -55,8 +54,6 @@ def add_fractions(a: int, b: int, c: int, d: int) -> str:
     add_fractions(1, 3, 1, 3) # 1/3 + 1/3 => there are many correct answers like "2/3" and "6/9"
     add_fractions(2, 5, 1, 5) # 2/5 + 1/5 => there are many correct answers like "3/5" and "15/25"
     """
-    first_frac = a / b
-    second_frac = c / d
-    sumfracs = first_frac + second_frac
-    sumstring = Fraction(sumfracs).limit_denominator(10)
-    return str(sumstring)
+    upting = a * d + b * c
+    downting = b * d
+    return f"{upting}/{downting}"
