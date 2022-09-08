@@ -30,8 +30,7 @@ def encode(message: str, shift: int) -> str:
     outp = ""
     for i in message:
         if i.isalpha():
-            character = i
-            location = alphabet.find(character)
+            location = alphabet.find(i)
             new_location = (location + shift) % 26
             outp += alphabet[new_location]
         else:
