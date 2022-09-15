@@ -96,7 +96,7 @@ if __name__ == '__main__':
 """EX03 ID code."""
 def is_valid_gender_number(first_num: int) -> bool:
     """Check if ID first number is valid."""
-    if first_num == range(1, 7):
+    if first_num == range(1, 6):
         return True
     else:
         return False
