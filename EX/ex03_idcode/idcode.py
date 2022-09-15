@@ -94,9 +94,11 @@ if __name__ == '__main__':
 
 
 """EX03 ID code."""
+
+
 def is_valid_gender_number(first_num: int) -> bool:
     """Check if ID first number is valid."""
-    if first_num == range(1, 6):
+    if 0 < first_num < 7:
         return True
     else:
         return False
@@ -114,7 +116,8 @@ def is_valid_year_number(year_number: int) -> bool:
     """Check if given value is correct for year number in ID code."""
     if (year_number >= 0) and (year_number < 100):
         return True
-    else: return False
+    else:
+        return False
 
     # Write your code here
 
