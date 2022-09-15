@@ -189,15 +189,12 @@ def get_full_year(gender_number: int, year_number: int) -> int:
 
 def get_birth_place(birth_number: int) -> str:
     """Find the place where the person was born."""
-
     if birth_number not in range(1, 1000):
         return "Wrong input!"
     if 1 <= birth_number <= 10:
         return "Kuressaare"
     if 11 <= birth_number <= 20:
         return "Tartu"
-    if 21 <= birth_number <= 220:
-        return "Tallinn"
     if 221 <= birth_number <= 270:
         return "Kohtla-Järve"
     if 271 <= birth_number <= 370:
@@ -206,7 +203,7 @@ def get_birth_place(birth_number: int) -> str:
         return "Narva"
     if 421 <= birth_number <= 470:
         return "Pärnu"
-    if 471 <= birth_number <= 710:
+    if (471 <= birth_number <= 710) or (21 <= birth_number <= 220):
         return "Tallinn"
     if 711 <= birth_number <= 999:
         return "undefined"
