@@ -269,9 +269,6 @@ def is_valid_day_number(gender_number: int, year_number: int, month_number: int,
     """Check if given value is correct for day number in ID code."""
 
 
-    # Write your code here
-
-
 def is_id_valid(id_code: str) -> bool:
     """Check if given ID code is valid and return the result (True or False)."""
     # Write your code here
