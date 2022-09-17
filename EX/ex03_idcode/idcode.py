@@ -240,27 +240,35 @@ def is_valid_control_number(id_code: str) -> bool:
         sum_numbers += some_num * control_number[a]
         a += 1
     check_num = sum_numbers % 11
-    if check_num < 10:
+    if check_num < 10 and check_num == int(id_code[-1]):
+        return True
+    if check_num < 10 and check_num != int(id_code[-1]):
         return False
-    if check_num >= 10:
-        numbers2 = [3, 4, 5, 6, 7, 8, 9, 1, 2, 3]
-        sum2 = 0
-        new_id = id_code[:-1]
-        b = 0
+    numbers2 = [3, 4, 5, 6, 7, 8, 9, 1, 2, 3]
+    sum2 = 0
+    new_id = id_code[:-1]
+    b = 0
 
-        for i in range(len(new_id)):
-            some_num2 = int(new_id[i])
-            sum2 += some_num2 * numbers2[b]
-            b += 1
-        check_num2 = sum2 % 11
-        if check_num2 == int(id_code[-1]):
-            return True
-        if check_num2 != int(id_code[-1]):
-            return False
+    for i in range(len(new_id)):
+        some_num2 = int(new_id[i])
+        sum2 += some_num2 * numbers2[b]
+        b += 1
+    check_num2 = sum2 % 11
+    if check_num2 >= 10 and int(id_code[-1]) == 0:
+        return True
+    elif check_num2 < 10:
+        return True
+    elif check_num2 == int(id_code[-1]):
+        return True
+    else:
+        return False
 
 
 def is_valid_day_number(gender_number: int, year_number: int, month_number: int, day_number: int) -> bool:
     """Check if given value is correct for day number in ID code."""
+    if month_number == 2:
+        full_year = get_full_year(gender_number, year_number)
+        leap_year = is_leap_year(full_year)
 
 
 def is_id_valid(id_code: str) -> bool:
