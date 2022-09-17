@@ -244,7 +244,7 @@ def is_valid_control_number(id_code: str) -> bool:
         return False
     if check_num == int(id_code[-1]):
         return True
-    if check_num % 11 >=10:
+    if check_num >= 10:
         numbers2 = [3, 4, 5, 6, 7, 8, 9, 1, 2, 3]
         sum2 = 0
         new_id = id_code[:-1]
