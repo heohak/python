@@ -266,9 +266,17 @@ def is_valid_control_number(id_code: str) -> bool:
 
 def is_valid_day_number(gender_number: int, year_number: int, month_number: int, day_number: int) -> bool:
     """Check if given value is correct for day number in ID code."""
-    if month_number == 2:
-        full_year = get_full_year(gender_number, year_number)
-        leap_year = is_leap_year(full_year)
+    full_year = get_full_year(gender_number, year_number)
+    leap_year = is_leap_year(full_year)
+    day_count_for_month = [0, 31, 28, 31, 30, 31, 30, 31, 31, 30, 31, 30, 31]
+    if leap_year:
+        day_count_for_month[2] = 29
+    return (1 <= month_number <= 12 and 1 <= day_number <= day_count_for_month[month_number])
+
+
+
+
+
 
 
 def is_id_valid(id_code: str) -> bool:
