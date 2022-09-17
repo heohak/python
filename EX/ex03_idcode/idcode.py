@@ -240,10 +240,8 @@ def is_valid_control_number(id_code: str) -> bool:
         sum_numbers += some_num * control_number[a]
         a += 1
     check_num = sum_numbers % 11
-    if check_num != int(id_code[-1]):
+    if check_num < 10:
         return False
-    if check_num == int(id_code[-1]):
-        return True
     if check_num >= 10:
         numbers2 = [3, 4, 5, 6, 7, 8, 9, 1, 2, 3]
         sum2 = 0
