@@ -274,13 +274,21 @@ def is_valid_day_number(gender_number: int, year_number: int, month_number: int,
     return (1 <= month_number <= 12 and 1 <= day_number <= day_count_for_month[month_number])
 
 
-
-
-
-
-
 def is_id_valid(id_code: str) -> bool:
     """Check if given ID code is valid and return the result (True or False)."""
+    if len(find_id_code(id_code)) != 11:
+        return False
+    gender_number = int(id_code[0])
+    year_number = int(id_code[1:3])
+    month_number = int(id_code[3:5])
+    day_number = int(id_code[5:7])
+    birth_number = int(id_code[7:10])
+    control_number = int(id_code[10])
+    if is_valid_gender_number(gender_number) and is_valid_year_number(year_number) and is_valid_month_number(month_number) and is_valid_day_number(gender_number, year_number, month_number, day_number) and is_valid_birth_number(birth_number) and  is_valid_control_number(id_code):
+        return True
+    else:
+        return False
+
     # Write your code here
 
 
