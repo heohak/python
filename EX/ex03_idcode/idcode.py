@@ -283,8 +283,7 @@ def is_id_valid(id_code: str) -> bool:
     month_number = int(id_code[3:5])
     day_number = int(id_code[5:7])
     birth_number = int(id_code[7:10])
-    control_number = int(id_code[10])
-    if is_valid_gender_number(gender_number) and is_valid_year_number(year_number) and is_valid_month_number(month_number) and is_valid_day_number(gender_number, year_number, month_number, day_number) and is_valid_birth_number(birth_number) and  is_valid_control_number(id_code):
+    if is_valid_gender_number(gender_number) and is_valid_year_number(year_number) and is_valid_month_number(month_number) and is_valid_day_number(gender_number, year_number, month_number, day_number) and is_valid_birth_number(birth_number) and is_valid_control_number(id_code):
         return True
     else:
         return False
