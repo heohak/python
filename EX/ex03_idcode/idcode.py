@@ -262,9 +262,6 @@ def is_valid_control_number(id_code: str) -> bool:
     if check_num2 != int(id_code[-1]):
         return False
 
-
-
-
 def is_valid_day_number(gender_number: int, year_number: int, month_number: int, day_number: int) -> bool:
     """Check if given value is correct for day number in ID code."""
 
