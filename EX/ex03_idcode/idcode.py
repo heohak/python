@@ -293,6 +293,18 @@ def is_id_valid(id_code: str) -> bool:
 
 def get_data_from_id(id_code: str) -> str:
     """Get possible information about the person."""
+    full_year = get_full_year(int(id_code[0]), int(id_code[1:3]))
+    sex = get_gender(int(id_code[0]))
+    birthdate = str(id_code[5:7]) + "." + str(id_code[3:5]) + "." + str(full_year)
+    location = get_birth_place(int(id_code[7:10]))
+    if is_id_valid(id_code) != True:
+        return "Given invalid ID code!"
+    else:
+        return f"This is a {sex} born on {birthdate} in {location}."
+
+
+
+
     # Write your code here
 
 
