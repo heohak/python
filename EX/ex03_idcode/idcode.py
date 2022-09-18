@@ -297,15 +297,10 @@ def get_data_from_id(id_code: str) -> str:
     sex = get_gender(int(id_code[0]))
     birthdate = str(id_code[5:7]) + "." + str(id_code[3:5]) + "." + str(full_year)
     location = get_birth_place(int(id_code[7:10]))
-    if is_id_valid(id_code) != True:
+    if not is_id_valid(id_code):
         return "Given invalid ID code!"
     else:
         return f"This is a {sex} born on {birthdate} in {location}."
-
-
-
-
-    # Write your code here
 
 
 if __name__ == '__main__':
