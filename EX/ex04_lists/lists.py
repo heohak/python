@@ -9,7 +9,10 @@ def list_of_cars(all_cars: str) -> list:
 
     "Audi A4,Skoda Superb,Audi A4" => ["Audi A4", "Skoda Superb", "Audi A4"]
     """
-    return all_cars.split(",")
+    if all_cars == "":
+        return []
+    else:
+        return all_cars.split(",")
 
 
 def car_makes(all_cars: str) -> list:
