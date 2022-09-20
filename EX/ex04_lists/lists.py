@@ -1,5 +1,6 @@
 """Car inventory."""
 
+
 def list_of_cars(all_cars: str) -> list:
     """
     Return list of cars.
@@ -25,6 +26,8 @@ def car_makes(all_cars: str) -> list:
     """
     list2 = []
     list1 = all_cars.split(",")
+    if all_cars == "":
+        return []
     for i in list1:
         make = i.split()
         list2.append(make[0])
@@ -42,6 +45,8 @@ def car_models(all_cars: str) -> list:
     """
     list2 = []
     list1 = all_cars.split(",")
+    if all_cars == "":
+        return []
     for i in list1:
         make = i.split()
         list2.append(make[-1])
