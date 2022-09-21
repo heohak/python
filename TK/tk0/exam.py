@@ -19,7 +19,7 @@ def workday_count(days: int) -> int:
     """
     weeks = days // 7
     ext = days % 7
-    if days == 6:
+    if ext == 6:
         return weeks * 5 + ext - 1
     else:
         return weeks * 5 + ext
