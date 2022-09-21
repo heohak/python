@@ -23,7 +23,6 @@ def workday_count(days: int) -> int:
         return weeks * 5 + ext - 1
     else:
         return weeks * 5 + ext
-print(workday_count(6))
 
 
 def sorta_sum(a: int, b: int) -> int:
@@ -92,7 +91,6 @@ def last_indices_elements_sum(nums: list) -> int:
     x2 = nums[nums[-2]]
     sum1 = x1 + x2
     return sum1
-print(last_indices_elements_sum([0, 1, 7, 2]))
 
 
 def divisions(numbers: list) -> int:
