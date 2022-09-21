@@ -83,13 +83,17 @@ def last_indices_elements_sum(nums: list) -> int:
     :param nums: List of non-negative integers.
     :return: Sum of elements at indices of last two elements.
     """
-    if nums[nums[-1]] > len(nums):
-        x1 = 0
-    elif nums[nums[-2]] > len(nums):
-        x2 = 0
-    x1 = nums[nums[-1]]
-    x2 = nums[nums[-2]]
-    sum1 = x1 + x2
+    a = nums[-1]
+    b = nums[-2]
+    if a > len(nums):
+        a = 0
+    else:
+        a = nums[nums[-1]]
+    if b > len(nums):
+        b = 0
+    else:
+        b = nums[nums[-2]]
+    sum1 = a + b
     return sum1
 
 
