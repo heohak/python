@@ -88,11 +88,11 @@ def last_indices_elements_sum(nums: list) -> int:
     if a > len(nums):
         a = 0
     else:
-        a = nums[nums[-1]]
+        a = nums[a]
     if b > len(nums):
         b = 0
     else:
-        b = nums[nums[-2]]
+        b = nums[b]
     sum1 = a + b
     return sum1
 
