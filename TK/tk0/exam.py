@@ -101,7 +101,7 @@ def divisions(numbers: list) -> int:
     """
     You are given a list of unique integers.
 
-    Find how many pairs of numbers there are in that list, such that for each pair, one of it's members is
+    Find how many pairs of numbers there are in that list, such that for each pair, one of it is members is
      divisible by the other.
 
     Note that "n and m" is considered the same pair as "m and n".
@@ -121,7 +121,6 @@ def divisions(numbers: list) -> int:
     res = 0
     for i in range(len(numbers)):
         for j in range(i + 1, len(numbers)):
-            if (numbers[i] % numbers[j] == 0 or
-                    numbers[j] % numbers[i] == 0):
+            if numbers[i] % numbers[j] == 0 or numbers[j] % numbers[i] == 0:
                 res += 1
     return res
