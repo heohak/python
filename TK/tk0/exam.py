@@ -85,16 +85,17 @@ def last_indices_elements_sum(nums: list) -> int:
     """
     a = nums[-1]
     b = nums[-2]
-    if a > len(nums):
-        a = 0
-    else:
-        a = nums[nums[-1]]
-    if b > len(nums):
-        b = 0
-    else:
-        b = nums[nums[-2]]
-    sum1 = a + b
-    return sum1
+    if a and b >= 0:
+        if a > len(nums):
+            a = 0
+        else:
+            a = nums[nums[-1]]
+        if b > len(nums):
+            b = 0
+        else:
+            b = nums[nums[-2]]
+        sum1 = a + b
+        return sum1
 
 
 def divisions(numbers: list) -> int:
