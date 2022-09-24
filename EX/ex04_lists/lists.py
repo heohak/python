@@ -56,7 +56,6 @@ def car_models(all_cars: str) -> list:
 
 def search_by_make(all_cars: str, make: str) -> list:
     """Search by make."""
-
     result = []
     car_list = all_cars.split(",")
     for car in car_list:
