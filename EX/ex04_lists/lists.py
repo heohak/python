@@ -70,11 +70,8 @@ def search_by_model(all_cars: str, model: str) -> list:
     result = []
     car_list = all_cars.split(",")
     for car in car_list:
-        car_model = car.split(" ")[-1]
-        car_model2 = car.split(" ")[-2]
-        if car_model.upper() == model.upper():
-            result.append(car)
-        if car_model2.upper() == model.upper():
+        car_model = car.upper().split(" ")[1:]
+        if model.upper() in car_model:
             result.append(car)
     return result
 
