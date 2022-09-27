@@ -123,13 +123,37 @@ def add_cars(car_list: list, all_cars: str) -> list:
 
     [['Audi', ['A4', 'A6']], ['Skoda', ['Superb']], ['BMW', ['A B C']]]
     """
-    return []
+    res = []
+    for car in car_list:
+        for i in car:
+            if car[0] not in res:
+                res.append(car[0])
+                for x in car[1]:
+                    if x not in res:
+                        res.append(x)
+
+    print(res)
+    aa = res[0]
+    bb = res[1]
+    cc = res[2]
+    dd = res[3]
+    a1 = " ".join([aa, bb])
+    a2 = " ".join([cc, dd])
+    print(a1)
+    print(a2)
+    list1 = [a1, a2]
+    print(list1)
+    string1 = ",".join(list1)
+    print(string1)
+    end = string1 + "," + all_cars
+    final = car_make_and_models(end)
+    return final
 
 
 print(car_make_and_models("Audi A4,Skoda Super,Skoda Octavia,BMW 530,Seat Leon,Skoda Superb,Skoda Superb,BMW x5"))
-        # [['Audi', ['A4']], ['Skoda', ['Super', 'Octavia', 'Superb']], ['BMW', ['530', 'x5']], ['Seat', ['Leon']]]
-print(car_make_and_models("Mazda 6,Mazda 6,Mazda 6,Mazda 6")) # [['Mazda', ['6']]]
-print(car_make_and_models("")) # []
+# [['Audi', ['A4']], ['Skoda', ['Super', 'Octavia', 'Superb']], ['BMW', ['530', 'x5']], ['Seat', ['Leon']]]
+print(car_make_and_models("Mazda 6,Mazda 6,Mazda 6,Mazda 6"))  # [['Mazda', ['6']]]
+print(car_make_and_models(""))  # []
 
 print(add_cars([['Audi', ['A4']], ['Skoda', ['Superb']]],
                "Audi A6,BMW A B C,Audi A4"))
