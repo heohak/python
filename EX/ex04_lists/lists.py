@@ -76,17 +76,61 @@ def search_by_model(all_cars: str, model: str) -> list:
     return result
 
 
-if __name__ == "__main__":
+def car_make_and_models(all_cars: str) -> list:
+    """
+    Create a list of structured information about makes and models.
+    For each different car make in the input string an element is created in the output list.
+    The element itself is a list, where the first position is the name of the make (string),
+    the second element is a list of models for the given make (list of strings).
 
-    print(list_of_cars("Audi A4,Skoda Superb,Audi A4"))  # ["Audi A4", "Skoda Superb", "Audi A4"]
-    print(car_makes("Audi A4,Skoda Super,Skoda Octavia,BMW 530,Seat Leon,Skoda Superb,Skoda Superb,BMW x5"))
-    # ['Audi', 'Skoda', 'BMW', 'Seat']
+    No duplicate makes or models should be in the output.
 
-    print(car_makes("Mazda 6,Mazda 6,Mazda 6,Mazda 6"))  # ['Mazda']
+    The order of the makes and models should be the same os in the input list (first appearance).
 
-    print(car_makes(""))  # []
+    "Audi A4,Skoda Super,Skoda Octavia,BMW 530,Seat Leon Lux,Skoda Superb,Skoda Superb,BMW x5" =>
+    [['Audi', ['A4']], ['Skoda', ['Super', 'Octavia', 'Superb']], ['BMW', ['530', 'x5']], ['Seat', ['Leon Lux']]]
+    """
+    car_list = list(dict.fromkeys(list_of_cars(all_cars)))
+    if all_cars == "":
+        return []
+    make_list = car_makes(all_cars)
+    result = []
+    for make in make_list:
+        a = [make, []]
+        for car in car_list:
+            car = car.split(" ", 1)
+            if car[0] == make:
+                a[1].append(car[1])
+        result.append(a)
+    return result
 
-    print(car_models("Audi A4,Skoda Superb,Audi A4,Audi A6,Tesla Model S,Skoda Super Lux Sport"))
-    # ["A4", "Superb", "A6"]
-    print(search_by_make("Audi A4,audi A5,AUDI a6 A7", "Audi"))
-    print(search_by_model("Audi A4,Audi a4 2021,Audi A40", "a4"))
+
+def add_cars(car_list: list, all_cars: str) -> list:
+    """
+    Add cars from the list into the existing car list.
+
+    The first parameter is in the same format as the output of the previous function.
+    The second parameter is a string of comma separated cars (as in all the previous functions).
+    The task is to add cars from the string into the list.
+
+    Hint: This and car_make_and_models are very similar functions. Try to use one inside another.
+
+    [['Audi', ['A4']], ['Skoda', ['Superb']]]
+    and
+    "Audi A6,BMW A B C,Audi A4"
+
+    =>
+
+    [['Audi', ['A4', 'A6']], ['Skoda', ['Superb']], ['BMW', ['A B C']]]
+    """
+    return []
+
+
+print(car_make_and_models("Audi A4,Skoda Super,Skoda Octavia,BMW 530,Seat Leon,Skoda Superb,Skoda Superb,BMW x5"))
+        # [['Audi', ['A4']], ['Skoda', ['Super', 'Octavia', 'Superb']], ['BMW', ['530', 'x5']], ['Seat', ['Leon']]]
+print(car_make_and_models("Mazda 6,Mazda 6,Mazda 6,Mazda 6")) # [['Mazda', ['6']]]
+print(car_make_and_models("")) # []
+
+print(add_cars([['Audi', ['A4']], ['Skoda', ['Superb']]],
+               "Audi A6,BMW A B C,Audi A4"))
+# [['Audi', ['A4', 'A6']], ['Skoda', ['Superb']], ['BMW', ['A B C']]]
