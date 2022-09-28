@@ -76,6 +76,25 @@ def search_by_model(all_cars: str, model: str) -> list:
     return result
 
 
+def car_duplicate(all_cars: str) -> list:
+    """
+    Mu enda funktsioon.
+    """
+    car_list = list_of_cars(all_cars)
+    if all_cars == "":
+        return []
+    make_list = car_makes(all_cars)
+    result = []
+    for make in make_list:
+        a = [make, []]
+        for car in car_list:
+            car = car.split(" ", 1)
+            if car[0] == make:
+                a[1].append(car[1])
+        result.append(a)
+    return result
+
+
 def car_make_and_models(all_cars: str) -> list:
     """
     Create a list of structured information about makes and models.
@@ -151,6 +170,7 @@ print(add_cars([['Audi', ['A4']], ['Skoda', ['Superb']]],
                "Audi A6,BMW A B C,Audi A4"))
 # [['Audi', ['A4', 'A6']], ['Skoda', ['Superb']], ['BMW', ['A B C']]]
 
+
 def number_of_cars(all_cars: str) -> list:
     """
     Create a list of tuples with make quantities.
@@ -158,7 +178,16 @@ def number_of_cars(all_cars: str) -> list:
     Each tuple is in the form: (make_name: str, quantity: int).
     The order of the tuples (makes) is the same as the first appearance in the list.
     """
-    return []
+    list1 = car_duplicate(all_cars)
+    if all_cars == "":
+        return []
+    result = []
+    for car in list1:
+        make = car[0]
+        arv = len(car[1])
+        a = (make, arv)
+        result.append(a)
+    return result
 
 
 def car_list_as_string(cars: list) -> str:
@@ -184,10 +213,9 @@ def car_list_as_string(cars: list) -> str:
     return list_as_string
 
 
+print(number_of_cars("Audi A4,Skoda Superb,Seat Leon,Audi A6"))  # [('Audi', 2), ('Skoda', 1), ('Seat', 1)]
+print(number_of_cars("Mazda 6,Mazda 6,Mazda 6,Mazda 6"))  # [('Mazda', 4)]
 
-print(number_of_cars("Audi A4,Skoda Superb,Seat Leon,Audi A6")) # [('Audi', 2), ('Skoda', 1), ('Seat', 1)]
-print(number_of_cars("Mazda 6,Mazda 6,Mazda 6,Mazda 6")) # [('Mazda', 4)]
-
-print(number_of_cars("")) # []
+print(number_of_cars(""))  # []
 
 print(car_list_as_string([['Audi', ['A4']], ['Skoda', ['Superb']]]))  # "Audi A4,Skoda Superb"
