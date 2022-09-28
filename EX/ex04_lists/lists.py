@@ -77,9 +77,7 @@ def search_by_model(all_cars: str, model: str) -> list:
 
 
 def car_duplicate(all_cars: str) -> list:
-    """
-    Mu enda funktsioon.
-    """
+    """Mu enda funktsioon."""
     car_list = list_of_cars(all_cars)
     if all_cars == "":
         return []
@@ -174,6 +172,7 @@ print(add_cars([['Audi', ['A4']], ['Skoda', ['Superb']]],
 def number_of_cars(all_cars: str) -> list:
     """
     Create a list of tuples with make quantities.
+
     The result is a list of tuples.
     Each tuple is in the form: (make_name: str, quantity: int).
     The order of the tuples (makes) is the same as the first appearance in the list.
