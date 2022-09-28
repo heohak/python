@@ -124,6 +124,21 @@ def add_cars(car_list: list, all_cars: str) -> list:
 
     [['Audi', ['A4', 'A6']], ['Skoda', ['Superb']], ['BMW', ['A B C']]]
     """
+    result = []
+    for car in car_list:
+        if car[0] not in result:
+            make = car[0]
+            for x in car[1]:
+                if x not in result:
+                    model = "".join(x)
+                    make_and_model = make + " " + model
+                    result.append(make_and_model)
+
+    list_as_string = ",".join(result)
+    all_ever_cars = list_as_string + "," + all_cars
+    final = car_make_and_models(all_ever_cars)
+    return final
+
 
 print(car_make_and_models("Audi A4,Skoda Super,Skoda Octavia,BMW 530,Seat Leon,Skoda Superb,Skoda Superb,BMW x5"))
 # [['Audi', ['A4']], ['Skoda', ['Super', 'Octavia', 'Superb']], ['BMW', ['530', 'x5']], ['Seat', ['Leon']]]
