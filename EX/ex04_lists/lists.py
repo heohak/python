@@ -124,32 +124,6 @@ def add_cars(car_list: list, all_cars: str) -> list:
 
     [['Audi', ['A4', 'A6']], ['Skoda', ['Superb']], ['BMW', ['A B C']]]
     """
-    res = []
-    for car in car_list:
-        for i in car:
-            if car[0] not in res:
-                res.append(car[0])
-                for x in car[1]:
-                    if x not in res:
-                        res.append(x)
-
-    print(res)
-    aa = res[0]
-    bb = res[1]
-    cc = res[2]
-    dd = res[3]
-    a1 = " ".join([aa, bb])
-    a2 = " ".join([cc, dd])
-    print(a1)
-    print(a2)
-    list1 = [a1, a2]
-    print(list1)
-    string1 = ",".join(list1)
-    print(string1)
-    end = string1 + "," + all_cars
-    final = car_make_and_models(end)
-    return final
-
 
 print(car_make_and_models("Audi A4,Skoda Super,Skoda Octavia,BMW 530,Seat Leon,Skoda Superb,Skoda Superb,BMW x5"))
 # [['Audi', ['A4']], ['Skoda', ['Super', 'Octavia', 'Superb']], ['BMW', ['530', 'x5']], ['Seat', ['Leon']]]
@@ -159,3 +133,44 @@ print(car_make_and_models(""))  # []
 print(add_cars([['Audi', ['A4']], ['Skoda', ['Superb']]],
                "Audi A6,BMW A B C,Audi A4"))
 # [['Audi', ['A4', 'A6']], ['Skoda', ['Superb']], ['BMW', ['A B C']]]
+
+def number_of_cars(all_cars: str) -> list:
+    """
+    Create a list of tuples with make quantities.
+    The result is a list of tuples.
+    Each tuple is in the form: (make_name: str, quantity: int).
+    The order of the tuples (makes) is the same as the first appearance in the list.
+    """
+    return []
+
+
+def car_list_as_string(cars: list) -> str:
+    """
+    Create a list of cars.
+
+    The input list is in the same format as the result of car_make_and_models function.
+    The order of the elements in the string is the same as in the list.
+    [['Audi', ['A4']], ['Skoda', ['Superb']]] =>
+    "Audi A4,Skoda Superb"
+    """
+    result = []
+    for car in cars:
+        if car[0] not in result:
+            make = car[0]
+            for x in car[1]:
+                if x not in result:
+                    model = "".join(x)
+                    make_and_model = make + " " + model
+                    result.append(make_and_model)
+
+    list_as_string = ",".join(result)
+    return list_as_string
+
+
+
+print(number_of_cars("Audi A4,Skoda Superb,Seat Leon,Audi A6")) # [('Audi', 2), ('Skoda', 1), ('Seat', 1)]
+print(number_of_cars("Mazda 6,Mazda 6,Mazda 6,Mazda 6")) # [('Mazda', 4)]
+
+print(number_of_cars("")) # []
+
+print(car_list_as_string([['Audi', ['A4']], ['Skoda', ['Superb']]]))  # "Audi A4,Skoda Superb"
