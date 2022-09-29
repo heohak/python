@@ -73,12 +73,15 @@ def non_decreasing_list(nums: list) -> bool:
 
     non_decreasing_list([0, 1, 2, 3, 98]) => True
     non_decreasing_list([50, 49]) => False
-    non_decreasing_list([12, 12]) => True
+    non_decreasing_list([50, 49]) => True
 
     :param nums:
     :return:
     """
-    pass
+    for i in range(len(nums) - 1):
+        if nums[i] < nums[i + 1]:
+            return True
+        return False
 
 
 def max_duplicate(nums: list):
@@ -95,4 +98,7 @@ def max_duplicate(nums: list):
     :return: Maximum element with duplicate. None if no duplicate found.
     """
     pass
-print(without_end('coding'))
+
+print(non_decreasing_list([0, 1, 2, 3, 98]))
+print(non_decreasing_list([50, 49]))
+print(non_decreasing_list([50, 49]))
