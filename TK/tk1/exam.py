@@ -21,9 +21,9 @@ def format_time(minutes: int) -> str:
     """
     hour = minutes // 60
     ext = minutes % 60
-    if minutes == 0:
+    if ext == 0:
         return f"{hour}h"
-    if hour == 0:
+    elif hour == 0:
         return f"{ext}min"
     else:
         return f"{hour}h {ext}min"
