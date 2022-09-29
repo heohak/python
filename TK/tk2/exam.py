@@ -14,8 +14,9 @@ def middle_value(a: int, b: int, c: int) -> int:
     middle_value(2, 6, 2) => 2
     middle_value(88, 88, 88) => 88
     """
-    final = (a + b + c) // 3
-    return final
+    x = [a, b, c]
+    y = sorted(x)[len(x) // 2]
+    return y
 
 
 def lucky_guess(n: int) -> bool:
@@ -71,7 +72,7 @@ def non_decreasing_list(nums: list) -> bool:
     pass
 
 
-def max_duplicate(nums: list) -> int | None:
+def max_duplicate(nums: list):
     """
     Return the largest element which has at least one duplicate.
 
@@ -85,3 +86,6 @@ def max_duplicate(nums: list) -> int | None:
     :return: Maximum element with duplicate. None if no duplicate found.
     """
     pass
+
+print(middle_value(88, 88, 88))
+print(middle_value(2, 6, 2))
