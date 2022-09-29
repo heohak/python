@@ -106,7 +106,7 @@ def max_duplicate(nums: list):
     :return: Maximum element with duplicate. None if no duplicate found.
     """
     max_e = max(nums)
-    howmany = nums.count(max_e)
+    howmany = int(nums.count(max_e))
     if howmany > 1:
         return max_e
     else:
