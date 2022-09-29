@@ -124,5 +124,3 @@ def remove_in_middle(text, to_remove):
     """
     a1 = ''.join(text.rsplit(to_remove, text.count(to_remove)))
     return a1
-
-print(num_as_index([0, 1, 0]))
