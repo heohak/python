@@ -107,7 +107,7 @@ def max_duplicate(nums: list):
     """
     max_e = max(nums)
     howmany = int(nums.count(max_e))
-    if howmany > 1:
+    if howmany >= 2:
         return max_e
     else:
         return None
