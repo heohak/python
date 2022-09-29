@@ -110,13 +110,7 @@ def max_duplicate(nums: list):
     for i in nums:
         if i == max_e:
             newlist.append(i)
-    if max_e:
-        if len(newlist) > 1:
-            return max_e
-    else:
+    if len(newlist) == len(nums):
         return None
-
-
-print(non_decreasing_list([0, 1, 2, 3, 98]))
-print(non_decreasing_list([50, 49]))
-print(non_decreasing_list([50, 49]))
+    else:
+        return max_e
