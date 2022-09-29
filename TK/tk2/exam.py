@@ -105,12 +105,11 @@ def max_duplicate(nums: list):
     :param nums: List of integers
     :return: Maximum element with duplicate. None if no duplicate found.
     """
-    max_e = max(nums)
-    howmany = int(nums.count(max_e))
-    if howmany >= 2:
-        return max_e
-    else:
+    big = max(nums)
+    if len(nums) == len(set(nums)):
         return None
+    else:
+        return big
 
 
 print(max_duplicate([99, 2, 99, 10, 1, 1]))
