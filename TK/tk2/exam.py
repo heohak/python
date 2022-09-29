@@ -36,7 +36,15 @@ def lucky_guess(n: int) -> bool:
     :param n: given number
     :return: boolean - points or no points
     """
-    return False
+    if n == 1 or n == 3 or n == 7:
+        return True
+    if -6 <= n <= 121 and n % 13 == 0:
+        return True
+    string1 = str(n)
+    if (n < 0) and ("5" not in string1) or (n < 0) and ("6" not in string1):
+        return True
+    else:
+        return False
 
 
 def without_end(s: str) -> str:
@@ -52,7 +60,8 @@ def without_end(s: str) -> str:
     :param s: String
     :return: String without first and last char.
     """
-    pass
+    result = s[1:-1]
+    return result
 
 
 def non_decreasing_list(nums: list) -> bool:
@@ -86,6 +95,4 @@ def max_duplicate(nums: list):
     :return: Maximum element with duplicate. None if no duplicate found.
     """
     pass
-
-print(middle_value(88, 88, 88))
-print(middle_value(2, 6, 2))
+print(without_end('coding'))
