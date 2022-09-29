@@ -80,8 +80,8 @@ def non_decreasing_list(nums: list) -> bool:
     """
     for i in range(len(nums) - 1):
         if nums[i] < nums[i + 1]:
-            return True
-        return False
+            return False
+        return True
 
 
 def max_duplicate(nums: list):
