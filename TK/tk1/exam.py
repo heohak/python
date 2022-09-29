@@ -20,7 +20,7 @@ def format_time(minutes: int) -> str:
     :return: formatted time in hours and minutes
     """
     hours = minutes // 60
-    ext = minutes & 60
+    ext = minutes % 60
     if hours == 0:
         return f"{ext}min"
     elif ext == 0:
