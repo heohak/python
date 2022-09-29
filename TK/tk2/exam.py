@@ -1,5 +1,6 @@
 """TK2."""
 
+
 def middle_value(a: int, b: int, c: int) -> int:
     """
     Return the middle value out of three values.
@@ -83,13 +84,12 @@ def non_decreasing_list(nums: list) -> bool:
     :param nums:
     :return:
     """
-    it = iter(nums)
-    prev = next(it)
-    for e in it:
-        if e > prev:
-            return True
-        prev = e
-    return False
+    previous = nums[0]
+    for number in nums:
+        if number < previous:
+            return False
+        previous = number
+    return True
 
 
 def max_duplicate(nums: list):
@@ -110,9 +110,13 @@ def max_duplicate(nums: list):
     for i in nums:
         if i == max_e:
             newlist.append(i)
-    if len(newlist) > 1:
-        return max_e
+    if max_e:
+        if len(newlist) > 1:
+            return max_e
     else:
         return None
 
-print(lucky_guess(-35))
+
+print(non_decreasing_list([0, 1, 2, 3, 98]))
+print(non_decreasing_list([50, 49]))
+print(non_decreasing_list([50, 49]))
