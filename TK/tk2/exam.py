@@ -36,13 +36,18 @@ def lucky_guess(n: int) -> bool:
     :param n: given number
     :return: boolean - points or no points
     """
+    string1 = str(n)
     if n == 1 or n == 3 or n == 7:
         return True
     if -6 <= n <= 121 and n % 13 == 0:
         return True
-    string1 = str(n)
-    if (n < 0) and ("5" not in string1) or (n < 0) and ("6" not in string1):
-        return True
+    elif n < 0:
+        if "5" in string1:
+            return False
+        if "6" in string1:
+            return False
+        else:
+            return True
     else:
         return False
 
@@ -110,6 +115,4 @@ def max_duplicate(nums: list):
     else:
         return None
 
-print(max_duplicate([1, 2, 3]))
-print(max_duplicate([1, 2, 2, 1, 1]))
-print(max_duplicate([1, 2, 2]))
+print(lucky_guess(-35))
