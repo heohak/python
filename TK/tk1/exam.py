@@ -125,10 +125,3 @@ def remove_in_middle(text, to_remove):
     return a1
 
 
-print(num_as_index([1, 2, 3]))
-print(num_as_index([4, 5, 6]))
-print(num_as_index([0, 1, 0]))
-print(num_as_index([3, 5, 6, 1, 1]))
-print(remove_in_middle("abcd", "abc"))
-print(remove_in_middle("abcabcabc", "abc"))
-print(remove_in_middle("ABCAaaaAA", "a"))
