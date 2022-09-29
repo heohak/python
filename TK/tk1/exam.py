@@ -20,13 +20,13 @@ def format_time(minutes: int) -> str:
     :return: formatted time in hours and minutes
     """
     hour = minutes // 60
-    hourminutes = minutes - 60 * hour
-    if minutes % 60 == 0:
+    ext = minutes % 60
+    if minutes == 0:
         return f"{hour}h"
-    if minutes < 60:
-        return f"{minutes}min"
+    if hour == 0:
+        return f"{ext}min"
     else:
-        return f"{hour}h {hourminutes}min"
+        return f"{hour}h {ext}min"
 
 
 def caught_speeding(speed, is_birthday):
