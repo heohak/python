@@ -58,3 +58,23 @@ if __name__ == '__main__':
     print(sort_dictionary({"": ["a", "f", "d"]}))
     print(sort_dictionary({"b": ["d", "a"], "a": ["c", "f"]}))
     print(sort_dictionary({"Jack": ["swimming", "hiking"], "Charlie": ["games", "yoga"]}))
+
+
+def create_dictionary_with_hobbies(data: str) -> dict:
+    """
+    Create dictionary about hobbies and their hobbyists ie. {hobby1: [name1, name2, ...], hobby2: [...]}.
+    :param data: given string from database
+    :return: dictionary, where keys are hobbies and values are lists of people. Values are sorted alphabetically
+    """
+    result = {}
+    list1 = data.split("\n")
+    for element in list1:
+        person = element.split(":")
+        hobby = person[0]
+        name = person[1]
+        if name not in result:
+            result[name] = [hobby]
+        elif hobby not in result[name]:
+            result[name].append(hobby)
+    sorted_dict = sort_dictionary(result)
+    return sorted_dict
