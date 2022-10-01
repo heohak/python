@@ -128,6 +128,3 @@ def mirror_ends(s: str) -> str:
     :return: Mirror image string
     """
     pass
-print(sum_of_a_beach("gOfIshsunesunFiSh"))
-print(sum_of_a_beach("GolDeNSanDyWateRyBeaChSuNN"))
-print(sum_of_a_beach("cItYTowNcARShoW"))
