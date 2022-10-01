@@ -71,7 +71,17 @@ def sum_of_a_beach(s: str) -> int:
     sum_of_a_beach("gOfIshsunesunFiSh")             ==>  4
     sum_of_a_beach("cItYTowNcARShoW")               ==>  0
     """
-    return 0
+    result = 0
+    for i in s:
+        if "sand".upper() in s.upper():
+            result += 1
+        if "water".upper() in s.upper():
+            result += 1
+        if "fish".upper() in s.upper():
+            result += 1
+        if "sun".upper() in s.upper():
+            result += 1
+        return result
 
 
 def min_index_value(nums: list) -> int:
@@ -89,7 +99,20 @@ def min_index_value(nums: list) -> int:
     :param nums: List of non-negative integers.
     :return: Minimum value of two elements at positions of the first and the last element value.
     """
-    pass
+    a = nums[0]
+    b = nums[-1]
+    if a >= len(nums):
+        return -1
+    else:
+        a = nums[a]
+    if b >= len(nums):
+        return -1
+    else:
+        b = nums[b]
+    if a < b:
+        return a
+    else:
+        return b
 
 
 def mirror_ends(s: str) -> str:
