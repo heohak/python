@@ -71,17 +71,13 @@ def sum_of_a_beach(s: str) -> int:
     sum_of_a_beach("gOfIshsunesunFiSh")             ==>  4
     sum_of_a_beach("cItYTowNcARShoW")               ==>  0
     """
-    result = 0
-    for i in s:
-        if "sand".upper() in s.upper():
-            result += 1
-        if "water".upper() in s.upper():
-            result += 1
-        if "fish".upper() in s.upper():
-            result += 1
-        if "sun".upper() in s.upper():
-            result += 1
-        return result
+    string1 = s.upper()
+    count1 = string1.count("sand".upper())
+    count2 = string1.count("sun".upper())
+    count3 = string1.count("fish".upper())
+    count4 = string1.count("water".upper())
+    all = count1 + count2 + count3 + count4
+    return all
 
 
 def min_index_value(nums: list) -> int:
@@ -132,3 +128,6 @@ def mirror_ends(s: str) -> str:
     :return: Mirror image string
     """
     pass
+print(sum_of_a_beach("gOfIshsunesunFiSh"))
+print(sum_of_a_beach("GolDeNSanDyWateRyBeaChSuNN"))
+print(sum_of_a_beach("cItYTowNcARShoW"))
