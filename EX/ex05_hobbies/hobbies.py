@@ -68,6 +68,7 @@ def create_dictionary_with_hobbies(data: str) -> dict:
 def find_people_with_most_hobbies(data: str) -> list:
     """
     Find the people who have the most hobbies.
+
     :param data: given string from database
     :return: list of people with most hobbies. Sorted alphabetically.
     """
