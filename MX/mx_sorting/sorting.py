@@ -136,7 +136,11 @@ def sort_people_by_popularity_of_name(people: list) -> list:
     :param people: Input list of people (Objects of the Person class).
     :return: Sorted list of people.
     """
-    pass
+    newlist = []
+    for i in people:
+        newlist.append(i.name)
+    popularity_list = sorted(newlist, key=lambda x: -newlist.count(x))
+    return popularity_list
 
 
 if __name__ == '__main__':
