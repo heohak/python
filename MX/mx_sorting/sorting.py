@@ -9,7 +9,7 @@ def sort_numbers_using_sort(numbers: list):
      (smallest to largest).
     NB: This function does not have to return value.
 
-    :param numbers: List of integers in a random order.
+    :param: numbers: List of integers in a random order.
     """
     numbers.sort()
 
@@ -74,9 +74,9 @@ class Person:
         """
         Person constructor.
 
-        :param name: First name of the person.
-        :param age: Age of the person.
-        :param height: Height of the person.
+        :param: name: First name of the person.
+        :param: age: Age of the person.
+        :param: height: Height of the person.
         """
         self.name = name
         self.age = age
@@ -99,7 +99,7 @@ def sort_people_by_name(people: list) -> list:
 
     See examples provided in '__main__' of how this function should work.
 
-    :param people: Input list of people (Objects of the Person class).
+    :param: people: Input list of people (Objects of the Person class).
     :return: Sorted list of people.
     """
     sorted_list = sorted(people, key=lambda x: x.name)
@@ -116,7 +116,7 @@ def sort_people_by_age_name_height(people: list) -> list:
 
     See examples provided in '__main__' of how this function should work.
 
-    :param people: Input list of people (Objects of the Person class).
+    :param: people: Input list of people (Objects of the Person class).
     :return: Sorted list of people.
     """
     sorted_list = sorted(people, key=lambda x: (x.age, x.name, x.height))
@@ -133,11 +133,11 @@ def sort_people_by_popularity_of_name(people: list) -> list:
 
     See more examples provided in '__main__' of how this function should work.
 
-    :param people: Input list of people (Objects of the Person class).
+    :param: people: Input list of people (Objects of the Person class).
     :return: Sorted list of people.
     """
-    newlist = list(map(lambda p: p.name, people))
-    popularity_list = sorted(people, key=lambda x: (-newlist.count(x.name), x.name))
+    new_list = list(map(lambda p: p.name, people))
+    popularity_list = sorted(people, key=lambda x: (-new_list.count(x.name), x.name))
     return popularity_list
 
 
