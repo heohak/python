@@ -139,7 +139,7 @@ def sort_people_by_popularity_of_name(people: list) -> list:
     newlist = []
     for i in people:
         newlist.append(i.name)
-    popularity_list = sorted(newlist, key=lambda x: -newlist.count(x))
+    popularity_list = sorted(people, key=lambda x: (-newlist.count(x.name), x.name))
     return popularity_list
 
 
