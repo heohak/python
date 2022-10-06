@@ -86,7 +86,10 @@ def find_words_from_sentences_only(text: str) -> list:
     :param text: given string to find words from
     :return: list of words found in sentences from given string
     """
-    pass
+    sentences = find_sentences(text)
+    sentences_as_list = str(sentences)
+    words = find_words_from_sentence(sentences_as_list)
+    return words
 
 
 def find_years(text: str) -> list:
