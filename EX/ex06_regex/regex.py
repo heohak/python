@@ -131,7 +131,12 @@ def find_phone_numbers(text: str) -> dict:
     :param text: given string to find phone numbers from
     :return: dict containing the numbers
     """
-    pass
+    pattern = r"(\+\d{3})?\s?(\d{7,8})"
+    list1 = re.findall(pattern, text)
+    result = {}
+    for (key, value) in list1:
+        result.setdefault(key, []).append(value)
+    return result
 
 
 if __name__ == '__main__':
