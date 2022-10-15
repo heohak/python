@@ -34,7 +34,6 @@ def read_file_contents_to_list(filename: str) -> list:
     return result
 
 
-
 def read_csv_file(filename: str) -> list:
     """
     Read CSV file into list of rows.
@@ -67,7 +66,6 @@ def read_csv_file(filename: str) -> list:
     return result
 
 
-
 def write_contents_to_file(filename: str, contents: str) -> None:
     """
     Write contents to file.
@@ -78,7 +76,8 @@ def write_contents_to_file(filename: str, contents: str) -> None:
     :param contents: Content to write to.
     :return: None
     """
-    pass
+    with open(filename, "w") as f:
+        f.write(contents)
 
 
 def write_lines_to_file(filename: str, lines: list) -> None:
@@ -94,7 +93,12 @@ def write_lines_to_file(filename: str, lines: list) -> None:
     :param lines: List of string to write to the file.
     :return: None
     """
-    pass
+    with open(filename, "w") as file:
+        for word in lines:
+            if word == lines[-1]:
+                file.write(word)
+            else:
+                file.write(word + "\n")
 
 
 def write_csv_file(filename: str, data: list) -> None:
@@ -118,7 +122,10 @@ def write_csv_file(filename: str, data: list) -> None:
     :param data: List of lists to write to the file.
     :return: None
     """
-    pass
+    with open(filename, 'w', newline='') as csv_file:
+        csv_writer = csv.writer(csv_file, delimiter=",")
+        for row in data:
+            csv_writer.writerow(row)
 
 
 def merge_dates_and_towns_into_csv(dates_filename: str, towns_filename: str, csv_output_filename: str) -> None:
@@ -170,5 +177,7 @@ def merge_dates_and_towns_into_csv(dates_filename: str, towns_filename: str, csv
 
 
 if __name__ == '__main__':
-    print(read_file_contents_to_list("test.txt"))
-    print(read_csv_file("test.txt"))
+
+    print(write_contents_to_file("test.txt", "tere henry"))
+    print(write_lines_to_file("test.txt", ["henry", "ago", "robin"]))
+    print(write_csv_file("test.txt", [["id", "name", "town", "birthday"], ["1", "ago", "tallinn", "01.01.2021"], ["2", "mari", "kuressaare", "02.02.2021"]]))
