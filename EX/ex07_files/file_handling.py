@@ -26,8 +26,13 @@ def read_file_contents_to_list(filename: str) -> list:
     :param filename: File to read.
     :return: List of lines.
     """
-    f = open(filename, newline="")
-    return f.readlines()
+    result = []
+    with open(filename) as file:
+        for line in file.readlines():
+            line1 = line.strip()
+            result.append(line1)
+    return result
+
 
 
 def read_csv_file(filename: str) -> list:
@@ -54,12 +59,12 @@ def read_csv_file(filename: str) -> list:
     :return: List of lists.
     """
     result = []
-    with open("filename") as csv_file:
-        csv_reader = csv.reader(csv_file, ",")
+    with open(filename) as csv_file:
+        csv_reader = csv.reader(csv_file, delimiter=",")
         for row in csv_reader:
             result.append(row)
 
-        return result
+    return result
 
 
 
@@ -162,3 +167,8 @@ def merge_dates_and_towns_into_csv(dates_filename: str, towns_filename: str, csv
     :return: None
     """
     pass
+
+
+if __name__ == '__main__':
+    print(read_file_contents_to_list("test.txt"))
+    print(read_csv_file("test.txt"))
