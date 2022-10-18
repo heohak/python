@@ -1,11 +1,12 @@
 import csv
+"Csv module."
 
 
 def read_file_contents(filename: str) -> str:
     """
     Read file contents into string.
-    In this exercise, we can assume the file exists.
 
+    In this exercise, we can assume the file exists.
     :param filename: File to read.
     :return: File contents as string.
     """
@@ -21,7 +22,7 @@ def read_file_contents_to_list(filename: str) -> list:
     Each line from the file should be a separate element.
     The order of the list should be the same as in the file.
 
-    List elements should not contain new line (\n).
+    List elements should not contain new line (n).
 
     :param filename: File to read.
     :return: List of lines.
