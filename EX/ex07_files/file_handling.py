@@ -187,22 +187,18 @@ def merge_dates_and_towns_into_csv(dates_filename: str, towns_filename: str, csv
     finalresult = [["name", "town", "date"]]
     name_list = []
 
-    for row in newdatelist:
-        name = row[0]
-        date = row[1]
-        if name not in name_list:
-            name_list.append(name)
-            finalresult.append([name, "-", date])
-    for line in newtownlist:
-        name1 = line[0]
-        town = line[1]
-        if name1 not in name_list:
-            finalresult.append([name1, town, "-"])
-        elif name1 in name_list:
+    for date in newdatelist:
+        if date[0] not in name_list:
+            name_list.append(date[0])
+            finalresult.append([date[0], "-", date[1]])
+    for town in newtownlist:
+        if town[0] not in name_list:
+            finalresult.append([town[0], town[1], "-"])
+        elif town[0] in name_list:
             for e in finalresult:
-                for row in newdatelist:
-                    if row[0] == name1 == e[0]:
-                        e[1] = town
+                for date in newdatelist:
+                    if date[0] == town[0] == e[0]:
+                        e[1] = town[1]
     write_csv_file(csv_output_filename, finalresult)
 
 
