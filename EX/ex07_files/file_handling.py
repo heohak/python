@@ -200,6 +200,7 @@ def merge_dates_and_towns_into_csv(dates_filename: str, towns_filename: str, csv
 
 
 def read_csv_file_with_colon(filename: str):
+    """My own func."""
     result = []
     with open(filename) as csv_file:
         csv_reader = csv.reader(csv_file, delimiter=":")
