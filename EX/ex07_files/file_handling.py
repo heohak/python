@@ -173,11 +173,38 @@ def merge_dates_and_towns_into_csv(dates_filename: str, towns_filename: str, csv
     :param csv_output_filename: Output CSV-file with names, towns and dates.
     :return: None
     """
-    pass
+    datelist = read_file_contents_to_list(dates_filename)
+    newdatelist = []
+    for element in datelist:
+        newelement = element.split(":")
+        newdatelist.append(newelement)
+    townlist = read_file_contents_to_list(towns_filename)
+    newtownlist = []
+    for element1 in townlist:
+        newtowelement = element1.split(":")
+        newtownlist.append(newtowelement)
+
+    finalresult = [["name", "town", "date"]]
+    name_list = []
+
+    for row in newdatelist:
+        name = row[0]
+        date = row[1]
+        if name not in name_list:
+            name_list.append(name)
+            finalresult.append([name, "-", date])
+    for line in newtownlist:
+        name1 = line[0]
+        town = line[1]
+        if name1 not in name_list:
+            finalresult.append([name1, town, "-"])
+        elif name1 in name_list:
+            for e in finalresult:
+                for row in newdatelist:
+                    if row[0] == name1 == e[0]:
+                        e[1] = town
+    write_csv_file(csv_output_filename, finalresult)
 
 
 if __name__ == '__main__':
-
-    print(write_contents_to_file("test.txt", "tere henry"))
-    print(write_lines_to_file("test.txt", ["henry", "ago", "robin"]))
-    print(write_csv_file("test.txt", [["id", "name", "town", "birthday"], ["1", "ago", "tallinn", "01.01.2021"], ["2", "mari", "kuressaare", "02.02.2021"]]))
+    print(merge_dates_and_towns_into_csv("test.txt", "towns.txt", "output.txt"))
