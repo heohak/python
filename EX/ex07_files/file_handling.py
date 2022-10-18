@@ -1,5 +1,5 @@
+"""Csv module."""
 import csv
-"Csv module."
 
 
 def read_file_contents(filename: str) -> str:
@@ -201,7 +201,3 @@ def merge_dates_and_towns_into_csv(dates_filename: str, towns_filename: str, csv
                     if date[0] == town[0] == e[0]:
                         e[1] = town[1]
     write_csv_file(csv_output_filename, finalresult)
-
-
-if __name__ == '__main__':
-    print(merge_dates_and_towns_into_csv("test.txt", "towns.txt", "output.txt"))
