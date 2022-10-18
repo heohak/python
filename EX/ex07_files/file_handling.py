@@ -179,11 +179,7 @@ def merge_dates_and_towns_into_csv(dates_filename: str, towns_filename: str, csv
     for element in datelist:
         newelement = element.split(":")
         newdatelist.append(newelement)
-    townlist = read_file_contents_to_list(towns_filename)
-    newtownlist = []
-    for element1 in townlist:
-        newtowelement = element1.split(":")
-        newtownlist.append(newtowelement)
+    newtownlist = read_csv_file_with_colon(towns_filename)
 
     finalresult = [["name", "town", "date"]]
     name_list = []
@@ -201,3 +197,13 @@ def merge_dates_and_towns_into_csv(dates_filename: str, towns_filename: str, csv
                     if date[0] == town[0] == e[0]:
                         e[1] = town[1]
     write_csv_file(csv_output_filename, finalresult)
+
+
+def read_csv_file_with_colon(filename: str):
+    result = []
+    with open(filename) as csv_file:
+        csv_reader = csv.reader(csv_file, delimiter=":")
+        for row in csv_reader:
+            result.append(row)
+
+    return result
