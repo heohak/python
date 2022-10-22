@@ -1,3 +1,6 @@
+"""Exercise 8."""
+
+
 def students_study(time: int, coffee_needed: bool) -> bool:
     """
     Return True if students study in given circumstances.
@@ -13,7 +16,6 @@ def students_study(time: int, coffee_needed: bool) -> bool:
         return False
     else:
         return False
-
 
 
 def lottery(a: int, b: int, c: int) -> int:
@@ -34,7 +36,6 @@ def lottery(a: int, b: int, c: int) -> int:
         return 0
 
 
-
 def fruit_order(small_baskets: int, big_baskets: int, ordered_amount: int) -> int:
     """
     Return number of small fruit baskets if it's possible to finish the order, otherwise return -1.
@@ -42,13 +43,11 @@ def fruit_order(small_baskets: int, big_baskets: int, ordered_amount: int) -> in
     (4, 1, 9) -> 4
     (3, 1, 10) -> -1
     """
-    bigkilos = big_baskets * 5
-    calc1 = bigkilos + small_baskets
+    big_basket_kilos = big_baskets * 5
+    calc1 = big_basket_kilos + small_baskets
     if calc1 == ordered_amount:
         return small_baskets
+    elif small_baskets > ordered_amount:
+        return ordered_amount
     else:
         return -1
-
-#print(students_study(24, False))
-#print(lottery(3, 3, 7))
-#print(fruit_order(2, 1, 7))
