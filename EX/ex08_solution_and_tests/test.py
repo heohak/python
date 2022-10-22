@@ -11,6 +11,7 @@ def test_students_study_evening_coffee_not_needed():
     assert students_study(24, False) is True
     assert students_study(20, True) is True
     assert students_study(21, False) is True
+    assert students_study(0, False) is False
 
 
 def test_students_study_night_no_study():
