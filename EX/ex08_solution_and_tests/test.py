@@ -122,3 +122,8 @@ def test_fruit_order_only_small_exact_match():
 def test_fruit_order_match_with_more_than_5_small():
     """More than 5 small baskets, match."""
     assert fruit_order(8, 2, 17) == 7
+
+def test_all_positive_exact_match():
+    """Exact match."""
+    assert fruit_order(4, 3, 19) == 4
+
