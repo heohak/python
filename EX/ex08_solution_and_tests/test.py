@@ -134,3 +134,9 @@ def test_fruit_order_all_smalls_some_bigs():
 def test_fruit_order_use_some_big_and_some_small():
     """Read function name."""
     assert fruit_order(3, 2, 6) == 1
+
+def test_fruit_order_not_enough_something():
+    """Not enought small baskets or big baskets or both."""
+    assert fruit_order(4, 5, 45) == -1
+    assert fruit_order(2, 2, 13) == -1
+    assert fruit_order(6, 1, 30) == -1
