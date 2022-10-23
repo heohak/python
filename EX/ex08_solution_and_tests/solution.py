@@ -44,7 +44,6 @@ def fruit_order(small_baskets: int, big_baskets: int, ordered_amount: int) -> in
     (3, 1, 10) -> -1
     """
     big_basket_kilos = big_baskets * 5
-    a = big_basket_kilos - 5
     calc1 = big_basket_kilos + small_baskets
 
     if calc1 == ordered_amount:
@@ -69,6 +68,3 @@ def fruit_order(small_baskets: int, big_baskets: int, ordered_amount: int) -> in
             return -1
     else:
         return -1
-
-
-#print(fruit_order(0, 4, 32))
