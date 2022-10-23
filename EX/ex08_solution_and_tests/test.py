@@ -114,3 +114,7 @@ def test_fruit_order_only_small_more_than_5_match_and_not():
     """Only small baskets, more than 5, match and no match."""
     assert fruit_order(8, 0, 5) == 5
     assert fruit_order(7, 0, 13) == -1
+
+def test_fruit_order_only_small_exact_match():
+    """Only small baskets and exact match."""
+    assert fruit_order(4, 0, 4) == 4
