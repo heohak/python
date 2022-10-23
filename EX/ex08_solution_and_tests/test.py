@@ -3,6 +3,7 @@ import pytest
 
 
 from solution import students_study
+from solution import lottery
 
 
 def test_students_study_evening_coffee_not_needed():
@@ -35,6 +36,19 @@ def test_students_study_day_coffee_needed():
     assert students_study(10, True) is True
 
 
+def test_lottery_all_fives():
+    """All fives."""
+    assert lottery(5, 5, 5) == 10
 
+def test_lottery_all_same_positive():
+    """All same positive numbers."""
+    assert lottery(3, 3, 3) == 5
 
+def test_lottery_all_same_negative():
+    """All same negative numbers."""
+    assert lottery(-7, -7, -7) == 5
+
+def test_lottery_all_zeros():
+    """All zeros."""
+    assert lottery(0, 0, 0) == 5
 
