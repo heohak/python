@@ -82,3 +82,16 @@ def test_fruit_order_all_zeros():
     assert fruit_order(0, 0, 0) == 0
 
 
+def test_fruit_order_zero_amount_zero_small():
+    """Amount zero and small baskets."""
+    assert fruit_order(0, 4, 0) == 0
+
+
+def test_fruit_order_zero_amount_zero_big():
+    """Amount zero and big baskets zero."""
+    assert fruit_order(6, 0, 0) == 0
+
+
+def test_fruit_order_zero_amount_others_not():
+    """Amount is zero, baskets not zero."""
+    assert fruit_order(1, 4, 0) == 0
