@@ -8,8 +8,12 @@ from solution import students_study
 def test_students_study_evening_coffee_not_needed():
     """During evening, coffee is not needed for studies."""
     assert students_study(18, True) is True
+    assert students_study(18, False) is True
+    assert students_study(24, False) is True
+    assert students_study(24, True) is True
     assert students_study(21, False) is True
-    assert students_study(-5, True) is False
+    assert students_study(21, True) is True
+
 
 
 def test_students_study_night_no_study():
