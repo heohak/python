@@ -130,3 +130,7 @@ def test_fruit_order_all_positive_exact_match():
 def test_fruit_order_all_smalls_some_bigs():
     """Use all small baskets and some big baskets."""
     assert fruit_order(1, 2, 6) == 1
+
+def test_fruit_order_use_some_big_and_some_small():
+    """Read function name."""
+    assert fruit_order(3, 2, 6) == 1
