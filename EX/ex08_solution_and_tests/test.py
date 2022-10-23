@@ -95,3 +95,7 @@ def test_fruit_order_zero_amount_zero_big():
 def test_fruit_order_zero_amount_others_not():
     """Amount is zero, baskets not zero."""
     assert fruit_order(1, 4, 0) == 0
+
+def test_fruit_order_only_big_match():
+    """Only big baskets and exact match."""
+    assert fruit_order(0, 1, 5) == 0
