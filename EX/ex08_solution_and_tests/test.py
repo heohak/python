@@ -156,4 +156,4 @@ def test_enough_big_not_enough_smalls():
 
 def test_match_large_numbers():
     """Match with large numbers."""
-    assert fruit_order(5, 1500, 3000) == 0
+    assert fruit_order(4000, 1000, 8000) == 3000
