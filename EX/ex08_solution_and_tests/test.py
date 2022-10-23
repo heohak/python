@@ -17,6 +17,11 @@ def test_students_study_night_no_study():
     assert students_study(1, True) is False
     assert students_study(2, False) is False
 
+def test_students_study_day_coffee_needed():
+    """During the day, coffee is needed for studies."""
+    assert students_study(10, True) is True
+    assert students_study(5, False) is False
+
 
 
 
