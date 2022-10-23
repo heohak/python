@@ -1,10 +1,8 @@
 """My testing file."""
-import pytest
 
-
-from solution import students_study
-from solution import lottery
 from solution import fruit_order
+from solution import lottery
+from solution import students_study
 
 
 def test_students_study_evening_coffee_not_needed():
@@ -96,9 +94,11 @@ def test_fruit_order_zero_amount_others_not():
     """Amount is zero, baskets not zero."""
     assert fruit_order(1, 4, 0) == 0
 
+
 def test_fruit_order_only_big_match():
     """Only big baskets and exact match."""
     assert fruit_order(0, 1, 5) == 0
+
 
 def test_fruit_order_only_big_not_enough_multi_big():
     """Only big baskets but not enough(multiple of 5)."""
@@ -106,41 +106,54 @@ def test_fruit_order_only_big_not_enough_multi_big():
 
 
 def test_fruit_order_only_big_more_than_required_match_and_not():
-    """Only big baskets, more than required match and not match"""
+    """Only big baskets, more than required match and not match."""
     assert fruit_order(0, 5, 20) == 0
     assert fruit_order(0, 5, 19) == -1
+
 
 def test_fruit_order_only_small_more_than_5_match_and_not():
     """Only small baskets, more than 5, match and no match."""
     assert fruit_order(8, 0, 5) == 5
     assert fruit_order(7, 0, 13) == -1
 
+
 def test_fruit_order_only_small_exact_match():
     """Only small baskets and exact match."""
     assert fruit_order(4, 0, 4) == 4
+
 
 def test_fruit_order_match_with_more_than_5_small():
     """More than 5 small baskets, match."""
     assert fruit_order(8, 2, 17) == 7
 
+
 def test_fruit_order_all_positive_exact_match():
     """Exact match."""
     assert fruit_order(4, 3, 19) == 4
+
 
 def test_fruit_order_all_smalls_some_bigs():
     """Use all small baskets and some big baskets."""
     assert fruit_order(1, 2, 6) == 1
 
+
 def test_fruit_order_use_some_big_and_some_small():
     """Read function name."""
     assert fruit_order(3, 2, 6) == 1
+
 
 def test_fruit_order_not_enough():
     """Not enough everything."""
     assert fruit_order(4, 5, 45) == -1
     assert fruit_order(6, 1, 30) == -1
 
+
 def test_enough_big_not_enough_smalls():
     """Not enough small baskets."""
     assert fruit_order(1, 8, 24) == -1
     assert fruit_order(2, 1800, 1603) == -1
+
+
+def test_match_large_numbers():
+    """Match with large numbers."""
+    assert fruit_order(5, 1500, 3000) == 0
