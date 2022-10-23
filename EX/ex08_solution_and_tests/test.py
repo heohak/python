@@ -138,3 +138,7 @@ def test_fruit_order_use_some_big_and_some_small():
 def test_fruit_order_not_enough():
     """Not enough."""
     assert fruit_order(4, 5, 45) == -1
+
+def test_enough_big_not_enough_smalls():
+    """Not enough small baskets."""
+    assert fruit_order(1, 4, 24)
