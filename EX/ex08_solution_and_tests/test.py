@@ -4,6 +4,7 @@ import pytest
 
 from solution import students_study
 from solution import lottery
+from solution import fruit_order
 
 
 def test_students_study_evening_coffee_not_needed():
@@ -74,3 +75,10 @@ def test_lottery_bc_same_a_diff():
 def test_lottery_all_diff():
     """All numbers different."""
     assert lottery(2, 6, 8) == 1
+
+
+def test_fruit_order_all_zeros():
+    """All zeros."""
+    assert fruit_order(0, 0, 0) == 0
+
+
