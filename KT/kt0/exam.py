@@ -57,18 +57,12 @@ def nr_into_num_list(nr: int, num_list: list) -> list:
     nr_into_num_list(0, [1,2,3,4,5]) -> [0,1,2,3,4,5,]
 
     """
-    if not num_list:
-        return [nr]
-    for i in num_list:
-        if nr >= max(num_list):
-            num_list.append(nr)
+    for i, num in enumerate(num_list):
+        if num > nr:
+            num_list.insert(i, nr)
             return num_list
-        elif i <= nr < i + 1:
-            num_list.insert(i - 1, nr)
-            return num_list
-        elif nr < min(num_list):
-            num_list.insert(0, nr)
-            return num_list
+    num_list.append(nr)
+    return num_list
 
 
 def symbol_average_position_in_words(words):
