@@ -45,11 +45,11 @@ def loop_sum(n: int) -> int:
     :param n: the last number to add to the sum
     :return: sum
     """
-    summ = 0
+    result = 0
     for i in range(n+1):
-        summ = summ + i
+        result = result + i
 
-    return summ
+    return result
 
 
 def recursive_sum(n: int) -> int:
@@ -105,11 +105,13 @@ def add_commas(n: int):
     :param n: int
     :return: string of the formatted int
     """
-    stringversion = str(n)
-    if len(stringversion) < 4:
-        return stringversion
+    string_version = str(n)
+    if len(string_version) < 4:
+        return string_version
     else:
-        return add_commas(n[:-3]) + ',' + n[-3:]
+        first_part = string_version[:-3]
+        first_part_as_int = int(first_part)
+        return add_commas(first_part_as_int) + ',' + string_version[-3:]
 
 
 def sum_digits_recursive(number: int) -> int:
@@ -125,10 +127,16 @@ def sum_digits_recursive(number: int) -> int:
 
     Hint: turn the number into string and take one digit at a time.
 
-    :param number: non-negative number
+    :param: number: non-negative number
     :return: sum of digits in the number
     """
-    pass
+    string1 = str(number)
+    first_digit = string1[0]
+    else_digit = string1[1:]
+    if len(string1) == 1:
+        return number
+    else:
+        return sum_digits_recursive(int(else_digit)) + int(first_digit)
 
 
 def pair_star_recursive(s: str) -> str:
@@ -147,7 +155,15 @@ def pair_star_recursive(s: str) -> str:
     :param s: input string
     :return: string with stars between identical chars.
     """
-    pass
+    if len(s) == 0:
+        return s
+    i = 0
+    if i == len(s) - 1:
+        return s[0] + pair_star_recursive(s[1:])
+    if s[i] == s[i + 1]:
+        return s[0] + "*" + pair_star_recursive(s[1:])
+    else:
+        return s[0] + pair_star_recursive(s[1:])
 
 
 def stonks(coins: float, rate: float, years: int) -> int:
@@ -166,7 +182,12 @@ def stonks(coins: float, rate: float, years: int) -> int:
     :param years: number of years (0-50)
     :return: coins after years
     """
-    pass
+    r = 1 + rate / 100
+    if years == 0:
+        return int(coins)
+    else:
+
+        return stonks(coins * r, rate, years - 1)
 
 
 def quic_mafs(a: int, b: int) -> list:
@@ -186,7 +207,16 @@ def quic_mafs(a: int, b: int) -> list:
     :param b: int
     :return: result
     """
-    pass
+    if a == 0 or b == 0:
+        return [a, b]
+    elif a >= 2 * b:
+        new_a = a - 2 * b
+        return quic_mafs(new_a, b)
+    elif b >= 2 * a:
+        new_b = b - 2 * a
+        return quic_mafs(a, new_b)
+    else:
+        return [a, b]
 
 
 if __name__ == "__main__":
