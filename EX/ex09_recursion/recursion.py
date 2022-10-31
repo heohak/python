@@ -46,7 +46,7 @@ def loop_sum(n: int) -> int:
     :return: sum
     """
     result = 0
-    for i in range(n+1):
+    for i in range(n + 1):
         result = result + i
 
     return result
