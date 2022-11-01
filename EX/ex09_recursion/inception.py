@@ -76,7 +76,14 @@ def sum_squares(nested_list):
     :param nested_list: list of lists of lists of lists of lists ... and ints
     :return: sum of squares
     """
-    pass
+    if not nested_list:
+        return 0
+    firstsym = nested_list[0]
+    othersym = nested_list[1:]
+    if type(firstsym) == int:
+        return firstsym ** 2 + sum_squares(othersym)
+    if type(firstsym) == list:
+        return sum_squares(firstsym) + sum_squares(othersym)
 
 
 def count_strings(data: list, pos=None, result: dict = None) -> dict:
@@ -99,12 +106,3 @@ def count_strings(data: list, pos=None, result: dict = None) -> dict:
     :return: dict of given symbols and their count
     """
     pass
-
-
-print(x_sum_recursion([], 3))  # 0
-print(x_sum_recursion([2, 5, 6, 0, 15, 5], 3))  # 11
-print(x_sum_recursion([0, 5, 6, -5, -9, 3], 1))  # 0
-print(x_sum_recursion([43, 90, 115, 500], -2))  # 158
-print(x_sum_recursion([1, 2], -9))  # 0
-print(x_sum_recursion([2, 3, 6], 5))  # 0
-print(x_sum_recursion([6, 5, 3, 2, 9, 8, 6, 5, 4], 3))  # 15
