@@ -5,6 +5,6 @@ class Student:
     """Class student."""
 
     def __init__(self, name, finished=False):
-        """Constructor."""
+        """Make constructor."""
         self.name = name
         self.finished = finished
