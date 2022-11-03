@@ -1,5 +1,6 @@
 """KT1."""
 
+
 def capitalize_string(s: str) -> str:
     """
     Return capitalized string.
@@ -28,7 +29,12 @@ def has_seven(nums):
     has_seven([7, 1, 7, 1, 7]) => True
     has_seven([7, 1, 7, 1, 1, 7]) => False
     """
-    pass
+    if nums.count(7) != 3:
+        return False
+    for i in range(1, len(nums)):
+        if nums[i] == nums[i - 1]:
+            return False
+    return True
 
 
 def list_move(initial_list: list, amount: int, factor: int) -> list:
