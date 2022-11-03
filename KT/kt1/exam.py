@@ -1,4 +1,5 @@
 """KT1."""
+import collections
 
 
 def capitalize_string(s: str) -> str:
@@ -51,17 +52,18 @@ def list_move(initial_list: list, amount: int, factor: int) -> list:
     list_move([1, 2, 3], 4, 1) => [[1, 2, 3], [3, 1, 2], [2, 3, 1], [1, 2, 3]]
     list_move([], 3, 4) => [[], [], []]
     """
-    if factor == 0:
-        return [initial_list] * amount
-    elif not initial_list:
-        return [[]] * amount
     result = []
-    counter = 1
-    result.append(initial_list)
-    while counter < amount:
-        newblock = [initial_list[-1]] + initial_list[:-1]
-        counter += 1
-        result.append(newblock)
+    if initial_list == []:
+        for i in range(1, amount + 1):
+            result.append(initial_list)
+        return result
+    for j in range(0, amount):
+        if j == 0:
+            result.append(initial_list)
+        else:
+            initial_list = collections.deque(initial_list)
+            initial_list.rotate(factor)
+            result.append(list(initial_list))
     return result
 
 
@@ -98,4 +100,25 @@ def parse_call_log(call_log: str) -> dict:
     :param call_log: the whole log as string
     :return: dictionary with call information
     """
-    pass
+    if call_log == "":
+        return {}
+
+    list1 = call_log.split(",")
+    print(list1)
+    list2 = []
+    for i in list1:
+        list2.append(i.split(":"))
+    print(list2)
+    result = {}
+    for j in list2:
+        if j[0] not in result:
+            result[j[0]] = [j[1]]
+        elif j[0] in result:
+            result[j[0]].append(j[1])
+
+
+print(list_move(["a", "b", "c"], 3, 0))
+print(list_move(["a", "b", "c"], 3, 1))
+print(list_move([1, 2, 3], 3, 2))
+print(list_move([1, 2, 3], 4, 1))
+print(list_move([], 3, 4))
