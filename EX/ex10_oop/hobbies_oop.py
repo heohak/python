@@ -1,5 +1,6 @@
 """Hobbies but OOP."""
 
+
 class Person:
     """
     Class for people.
@@ -50,6 +51,7 @@ def filter_by_hobby(people_list: list, hobby: str) -> list:
             result.append(people)
     return result
 
+
 def sort_by_most_hobbies(people_list: list) -> list:
     """
     Return a list of people sorted by amount of hobbies in descending order.
@@ -63,10 +65,6 @@ def sort_by_most_hobbies(people_list: list) -> list:
     return sorted(people_list, key=lambda x: (x.hobbies, x.full_name), reverse=True)
 
 
-
-
-
-
 def sort_by_least_hobbies(people_list: list) -> list:
     """
     Return a list of people sorted by amount of hobbies in ascending order.
@@ -77,10 +75,7 @@ def sort_by_least_hobbies(people_list: list) -> list:
     :param people_list: list of people to sort.
     :return: sorted list of people.
     """
-    result = []
-    for i in people_list:
-        result.append(i)
-    return sorted(people_list, key=lambda x: (x.hobbies, x.first_name))
+    return sorted(people_list, key=lambda x: (len(x.hobbies), x.full_name))
 
 
 def sort_people_and_hobbies(people_list: list) -> list:
@@ -91,10 +86,9 @@ def sort_people_and_hobbies(people_list: list) -> list:
     :param people_list: list of people to sort.
     :return: sorted list of people.
     """
-    a = sorted(people_list, key=lambda x: sorted(x.hobbies))
-    b = sorted(a, key=lambda k: k.full_name)
-    return(b)
-
+    for people in people_list:
+        people.hobbies = sorted(people.hobbies)
+    return sorted(people_list, key=lambda x: x.full_name)
 
 
 if __name__ == '__main__':
