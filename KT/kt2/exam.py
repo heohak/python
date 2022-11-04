@@ -55,7 +55,12 @@ def min_diff(nums: list) -> int:
     :param nums: list of ints, at least 2 elements.
     :return: min diff between 2 numbers.
     """
-    pass
+    result = 10**20
+    sorted_list = sorted(nums)
+    for i in range(len(nums) - 1):
+        if sorted_list[i + 1] - sorted_list[i] < result:
+            result = sorted_list[i + 1] - sorted_list[i]
+    return result
 
 
 def get_symbols_by_occurrences(text: str) -> dict:
