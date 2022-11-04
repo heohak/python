@@ -102,7 +102,7 @@ def sort_hashtags_by_popularity(tweets: list) -> list:
         dict1[key] = sum(value)
     sorted_dict = {k: v for k, v in sorted(dict1.items(), key=lambda item: (item[1], item[0].upper), reverse=True)}
     result = []
-    for i in sorted_dict:
+    for i in sorted_dict.keys():
         result.append(i)
     return result
 
