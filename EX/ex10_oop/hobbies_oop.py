@@ -47,7 +47,7 @@ def filter_by_hobby(people_list: list, hobby: str) -> list:
     result = []
     for people in people_list:
         if hobby in people.hobbies:
-            result.append(people.full_name)
+            result.append(people)
     return result
 
 def sort_by_most_hobbies(people_list: list) -> list:
@@ -79,8 +79,8 @@ def sort_by_least_hobbies(people_list: list) -> list:
     """
     result = []
     for i in people_list:
-        result.append(i.full_name)
-    return sorted(people_list, key=lambda x: (x.hobbies, ))
+        result.append(i)
+    return sorted(people_list, key=lambda x: (x.hobbies, x.first_name))
 
 
 def sort_people_and_hobbies(people_list: list) -> list:
@@ -91,7 +91,10 @@ def sort_people_and_hobbies(people_list: list) -> list:
     :param people_list: list of people to sort.
     :return: sorted list of people.
     """
-    return sorted(people_list, key=lambda x: (x.full_name, sorted(x.hobbies)))
+    a = sorted(people_list, key=lambda x: sorted(x.hobbies))
+    b = sorted(a, key=lambda k: k.full_name)
+    return(b)
+
 
 
 if __name__ == '__main__':
