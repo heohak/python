@@ -72,7 +72,15 @@ def get_symbols_by_occurrences(text: str) -> dict:
     get_symbols_by_occurrences("hello") => {1: ['e', 'o', 'h'], 2: ['l']}
     get_symbols_by_occurrences("abcaba") => {2: ['b'], 1: ['c'], 3: ['a']}
     """
-    pass
+    result = {}
+    for i in text:
+        count = text.count(i)
+        if count not in result:
+            result[count] = [i]
+        elif count in result:
+            if i not in result[count]:
+                result[count].append(i)
+    return result
 
 
 if __name__ == '__main__':
