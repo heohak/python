@@ -122,13 +122,15 @@ def largest_loss_per_day(filename: str) -> Optional[Client]:
         elif people.earned_per_day == count:
             result.append(final)
             result.append(people)
-
-    tmp = result[0]
-    for element in result:
-        if element.account_age < tmp.account_age:
-            return element
-        else:
-            return tmp
+    if len(result) > 0:
+        tmp = result[0]
+        for element in result:
+            if element.account_age < tmp.account_age:
+                return element
+            else:
+                return tmp
+    else:
+        return None
 
 
 
