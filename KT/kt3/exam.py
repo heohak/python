@@ -32,8 +32,13 @@ def only_one_pair(numbers: list) -> bool:
     only_one_pair([1, 2, 1, 3, 1, 2]) => False
     """
     for number in numbers:
+
         if numbers.count(number) == 2:
             return True
+        elif len(numbers) == 1:
+            return False
+        elif len(numbers) == 0:
+            return False
         else:
             return False
 
