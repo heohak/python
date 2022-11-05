@@ -37,6 +37,7 @@ class Client:
     def __repr__(self):
         """
         Client representation.
+
         :return: clients name
         """
         return self.name
@@ -111,6 +112,7 @@ def largest_loss_per_day(filename: str) -> Optional[Client]:
     :param filename: name of file to get info from.
     :return: client with largest loss.
     """
+    result = []
     final = None
     count = 0
     list1 = read_from_file_into_list(filename)
@@ -118,7 +120,11 @@ def largest_loss_per_day(filename: str) -> Optional[Client]:
         if people.earned_per_day < count:
             count = people.earned_per_day
             final = people
-    return final
+        elif people.earned_per_day == count:
+            result.append(people)
+            result.append(final)
+    a = sorted(result, key=lambda x: x.account_age)
+    return a[0]
 
 
 if __name__ == '__main__':
