@@ -111,7 +111,7 @@ def largest_loss_per_day(filename: str) -> Optional[Client]:
     :param filename: name of file to get info from.
     :return: client with largest loss.
     """
-    final = None
+    final = object
     count = 0
     list1 = read_from_file_into_list(filename)
     for people in list1:
