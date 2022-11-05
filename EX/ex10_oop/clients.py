@@ -111,7 +111,8 @@ def largest_loss_per_day(filename: str) -> Optional[Client]:
     :param filename: name of file to get info from.
     :return: client with largest loss.
     """
-    final = object
+    result = []
+    final = None
     count = 0
     list1 = read_from_file_into_list(filename)
     for people in list1:
@@ -119,12 +120,15 @@ def largest_loss_per_day(filename: str) -> Optional[Client]:
             count = people.earned_per_day
             final = people
         elif people.earned_per_day == count:
-            if people.account_age < final.account_age:
-                return people
-            else:
-                return final
+            result.append(final)
+            result.append(people)
 
-    return final
+    tmp = result[0]
+    for element in result:
+        if element.account_age < tmp.account_age:
+            return element
+        else:
+            return tmp
 
 
 
