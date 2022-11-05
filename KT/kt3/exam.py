@@ -32,7 +32,7 @@ def only_one_pair(numbers: list) -> bool:
     only_one_pair([1, 2, 1, 3, 1, 2]) => False
     """
     for number in numbers:
-        if numbers.count == 2:
+        if numbers.count(number) == 2:
             return True
         else:
             return False
@@ -90,10 +90,10 @@ if __name__ == '__main__':
     print(last_to_first("hello"))# == "ohell"
 
     print(only_one_pair([1, 2, 3])) #is False
-    only_one_pair([1]) #is False
-    only_one_pair([1, 2, 3, 1])# is True
-    only_one_pair([1, 2, 1, 3, 1]) #is False
-    only_one_pair([1, 2, 1, 3, 1, 2]) #is False
+    print(only_one_pair([1])) #is False
+    print(only_one_pair([1, 2, 3, 1]))# is True
+    print(only_one_pair([1, 2, 1, 3, 1])) #is False
+    print(only_one_pair([1, 2, 1, 3, 1, 2])) #is False
 
     pentabonacci(5)# == 1
     pentabonacci(10) #== 3
