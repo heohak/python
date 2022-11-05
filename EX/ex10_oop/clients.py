@@ -124,7 +124,10 @@ def largest_loss_per_day(filename: str) -> Optional[Client]:
             result.append(people)
             result.append(final)
     a = sorted(result, key=lambda x: x.account_age)
-    return a[0]
+    if len(a) > 0:
+        return a[0]
+    else:
+        return None
 
 
 if __name__ == '__main__':
