@@ -31,18 +31,19 @@ def only_one_pair(numbers: list) -> bool:
     only_one_pair([1, 2, 1, 3, 1]) => False
     only_one_pair([1, 2, 1, 3, 1, 2]) => False
     """
-    for number in numbers:
-
-        if numbers.count(number) == 2:
+    if len(numbers) <= 1:
+        return False
+    result = []
+    for i in numbers:
+        if numbers.count(i) > 1:
+            result.append(i)
+    for j in result:
+        if result.count(j) == 2:
             return True
-        elif len(numbers) == 1:
-            return False
-        elif len(numbers) == 0:
-            return False
         else:
             return False
-
-
+    else:
+        return False
 
 def pentabonacci(n: int) -> int:
     """
@@ -66,7 +67,14 @@ def pentabonacci(n: int) -> int:
     :param n: The last term to take into account.
     :return: Total number of odd values.
     """
-    pass
+    result = []
+
+    a, b = 0, 1
+    while a < n:
+        if a % 2:
+            result.append(a)
+        a, b = b, a + b
+        return result
 
 
 def swap_dict_keys_and_value_lists(d: dict) -> dict:
