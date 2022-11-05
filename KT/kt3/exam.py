@@ -34,16 +34,14 @@ def only_one_pair(numbers: list) -> bool:
     if len(numbers) <= 1:
         return False
     result = []
-    for i in numbers:
-        if numbers.count(i) > 1:
-            result.append(i)
-    for j in result:
-        if result.count(j) == 2:
+    for number in numbers:
+        if numbers.count(number) == 2:
+            result.append(number)
+        if len(result) == 1:
             return True
         else:
             return False
-    else:
-        return False
+
 
 def pentabonacci(n: int) -> int:
     """
