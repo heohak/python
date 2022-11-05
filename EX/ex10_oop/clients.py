@@ -118,7 +118,17 @@ def largest_loss_per_day(filename: str) -> Optional[Client]:
         if people.earned_per_day < count:
             count = people.earned_per_day
             final = people
+        elif people.earned_per_day == count:
+            if people.account_age < final.account_age:
+                return people
+            else:
+                return final
+
     return final
+
+
+
+
 
 
 if __name__ == '__main__':
