@@ -94,13 +94,13 @@ class AlchemicalStorage:
         """
         string1 = "Content:\n"
         if self.elements == []:
-            return f"Content:\nEmpty"
+            return f"Content:\n Empty"
         dict = {}
         for element in self.elements:
             if element not in dict:
                 dict[element.name] = self.elements.count(element)
         for key, value in dict.items():
-            string1 = string1 + f"* {key} x {value}\n"
+            string1 = string1 + f" * {key} x {value}\n"
         return string1
 
 
