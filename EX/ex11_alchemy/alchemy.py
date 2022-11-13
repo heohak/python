@@ -54,15 +54,12 @@ class AlchemicalStorage:
         :param element_name: Name of the element to remove.
         :return: The removed AlchemicalElement object or None.
         """
-        print(self.elements)
-        for element in self.elements:
-            if element_name in self.elements:
-               self.elements.pop(self.elements[element])
-               return element
-            elif self.elements.count(element_name) > 1:
-                for e in self.elements[-1]:
-                    self.elements.pop(self.elements[e])
-                    return e
+        index = 0
+        for element in self.elements[::-1]:
+            index = index - 1
+            if element_name == element.name:
+                popped_element = self.elements.pop(index)
+                return popped_element
             else:
                 return None
 
