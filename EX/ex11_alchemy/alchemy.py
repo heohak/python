@@ -7,6 +7,7 @@ class AlchemicalElement:
 
     Every element must have a name.
     """
+
     def __init__(self, name: str):
         """Element Constructor."""
         self.name = name
