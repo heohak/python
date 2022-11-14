@@ -16,8 +16,6 @@ class AlchemicalElement:
         return f"<AE: {self.name}>"
 
 
-
-
 class AlchemicalStorage:
     """AlchemicalStorage class."""
 
@@ -41,8 +39,6 @@ class AlchemicalStorage:
             self.elements.append(element)
         else:
             raise TypeError
-
-
 
     def pop(self, element_name: str) -> AlchemicalElement or None:
         """
@@ -92,21 +88,17 @@ class AlchemicalStorage:
         """
         string1 = "Content:"
         if not self.elements:
-            return f"Content:\n Empty."
+            return "Content:\n Empty."
         dict1 = {}
         for element in self.elements:
             if element.name not in dict1:
-                    dict1[element.name] = 1
+                dict1[element.name] = 1
             elif element.name in dict1:
                 dict1[element.name] = dict1[element.name] + 1
-
         q = dict(sorted(dict1.items()))
-        print(q)
-
         for key, value in q.items():
             string1 = string1 + f"\n * {key} x {value}"
         return string1
-
 
 
 if __name__ == '__main__':
