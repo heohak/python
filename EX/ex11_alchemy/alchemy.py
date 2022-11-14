@@ -95,7 +95,10 @@ class AlchemicalStorage:
             return f"Content:\n Empty."
         dict1 = {}
         for element in self.elements:
-                dict1[element.name] = self.elements.count(element)
+            if element.name not in dict1:
+                    dict1[element.name] = 1
+            elif element.name in dict1:
+                dict1[element.name] = dict1[element.name] + 1
 
         q = dict(sorted(dict1.items()))
         print(q)
