@@ -91,15 +91,15 @@ class AlchemicalStorage:
         :return: Content as a string.
         """
         string1 = "Content:\n"
-        if self.elements == []:
+        if not self.elements:
             return f"Content:\n Empty."
         dict1 = {}
         for element in self.elements:
             if element not in dict1:
                 dict1[element.name] = self.elements.count(element)
-        dict(sorted(dict1.items()))
+        q = dict(sorted(dict1.items()))
 
-        for key, value in dict1.items():
+        for key, value in q.items():
             string1 = string1 + f"  * {key} x {value}\n"
         return string1
 
@@ -115,6 +115,8 @@ if __name__ == '__main__':
     print(element_two)  # <AE: Water>
 
     storage.add(element_one)
+    storage.add(element_two)
+    storage.add(element_two)
     storage.add(element_two)
 
     print(storage.get_content())
