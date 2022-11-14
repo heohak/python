@@ -95,12 +95,10 @@ class AlchemicalStorage:
             return f"Content:\n Empty."
         dict1 = {}
         for element in self.elements:
-            if element not in dict1:
-                dict1[element.name] = self.elements.count(element)
-            elif element in dict1:
                 dict1[element.name] = self.elements.count(element)
 
         q = dict(sorted(dict1.items()))
+        print(q)
 
         for key, value in q.items():
             string1 = string1 + f"\n * {key} x {value}"
