@@ -100,7 +100,7 @@ class AlchemicalStorage:
         dict(sorted(dict1.items()))
 
         for key, value in dict1.items():
-            string1 = string1 + f" * {key} x {value} \n"
+            string1 = string1 + f"  * {key} x {value}\n"
         return string1
 
 
