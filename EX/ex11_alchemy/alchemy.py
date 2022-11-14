@@ -97,6 +97,9 @@ class AlchemicalStorage:
         for element in self.elements:
             if element not in dict1:
                 dict1[element.name] = self.elements.count(element)
+            elif element in dict1:
+                dict1[element.name] = self.elements.count(element)
+
         q = dict(sorted(dict1.items()))
 
         for key, value in q.items():
