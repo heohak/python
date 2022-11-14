@@ -90,7 +90,7 @@ class AlchemicalStorage:
 
         :return: Content as a string.
         """
-        string1 = "Content:\n"
+        string1 = "Content:"
         if not self.elements:
             return f"Content:\n Empty."
         dict1 = {}
@@ -100,7 +100,7 @@ class AlchemicalStorage:
         q = dict(sorted(dict1.items()))
 
         for key, value in q.items():
-            string1 = string1 + f"  * {key} x {value}\n"
+            string1 = string1 + f"\n * {key} x {value}"
         return string1
 
 
