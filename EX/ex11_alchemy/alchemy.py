@@ -60,8 +60,7 @@ class AlchemicalStorage:
             if element_name == element.name:
                 popped_element = self.elements.pop(index)
                 return popped_element
-            else:
-                return None
+        return None
 
     def extract(self):
         """
@@ -81,7 +80,9 @@ class AlchemicalStorage:
 
         :return: A list of all of the elements that were previously in the storage.
         """
-        return self.elements
+        a = self.elements
+        self.elements = []
+        return a
 
     def get_content(self) -> str:
         """
