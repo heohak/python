@@ -3,6 +3,7 @@
 
 class Adventurer:
     """Normal characater."""
+
     def __init__(self, name: str, class_type: str, power: int, experience: int = 0):
         """Construct."""
         self.name = name
@@ -37,6 +38,7 @@ class Adventurer:
 
 class Monster:
     """Adventurer opponent."""
+
     def __init__(self, name: str, type: str, power: int):
         """Construct."""
         self._name = name
@@ -49,6 +51,7 @@ class Monster:
 
     @property
     def name(self):
+        """Name."""
 
         if self.type == "Zombie":
             return f"Undead {self._name}"
@@ -82,15 +85,11 @@ class World:
         """Add adventurer to list."""
         if isinstance(adventurer, Adventurer):
             self._adventure_list.append(adventurer)
-        else:
-            raise TypeError("Ei, tüütu sõber, sa ei saa olla vaenlane.")
 
     def add_monster(self, monster: Monster):
         """Add monster to list."""
         if isinstance(monster, Monster):
             self._monster_list.append(monster)
-        else:
-            raise TypeError("Ei, tüütu sõber, sa ei saa olla vaenlane.")
 
     def get_graveyard(self):
         """Return graveyard list."""
