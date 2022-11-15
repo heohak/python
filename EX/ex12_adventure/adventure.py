@@ -3,9 +3,8 @@
 
 class Adventurer:
     """Normal characater."""
-
     def __init__(self, name: str, class_type: str, power: int, experience: int = 0):
-        """Constructor."""
+        """Construct."""
         self.name = name
         self.class_type = class_type
         self.power = power
@@ -13,42 +12,39 @@ class Adventurer:
         types = ["Fighter", "Druid", "Wizard", "Paladin"]
         if self.class_type not in types:
             self.class_type = "Fighter"
+            print("Ei, tüütu sõber, sa ei saa olla tulevikurändaja ja ninja, nüüd sa pead fighter olema.")
 
         if self.power > 99:
             self.power = 10
+            print("Ei maksa liiga tugevaks ka ennast alguses teha!")
 
     def __repr__(self):
         """Character representation."""
-
         return f"{self.name}, the {self.class_type}, Power: {self.power}, Experience: {self.experience}."
 
     def add_power(self, power: int):
         """Increase power."""
-
         self.power = self.power + power
 
     def add_experience(self, exp: int):
         """Increase experience."""
-
-        self.experience += exp
-
         if self.experience > 99:
             self.power = self.power + (self.experience // 10)
             self.experience = 0
+        else:
+            self.experience += exp
 
 
 class Monster:
     """Adventurer opponent."""
-
     def __init__(self, name: str, type: str, power: int):
-        """Constructor."""
+        """Construct."""
         self._name = name
         self.type = type
         self.power = power
 
     def __repr__(self):
         """Monster representation."""
-
         return f"{self.name} of type {self.type}, Power: {self.power}."
 
     @property
@@ -64,6 +60,7 @@ class World:
     """World."""
 
     def __init__(self, python_master: str):
+        """Construct."""
         self.__python_master = python_master
         self._adventure_list = []
         self._monster_list = []
@@ -71,33 +68,32 @@ class World:
 
     def get_python_master(self):
         """Return Python master."""
-
         return self.__python_master
 
     def get_monster_list(self):
         """Return monsters list."""
-
         return self._monster_list
 
     def get_adventurer_list(self):
         """Return adventurers list."""
-
         return self._adventure_list
 
     def add_adventurer(self, adventurer: Adventurer):
         """Add adventurer to list."""
-
         if isinstance(adventurer, Adventurer):
             self._adventure_list.append(adventurer)
+        else:
+            raise TypeError("Ei, tüütu sõber, sa ei saa olla vaenlane.")
 
-    def create_monster(self, monster: Monster):
+    def add_monster(self, monster: Monster):
         """Add monster to list."""
         if isinstance(monster, Monster):
             self._monster_list.append(monster)
+        else:
+            raise TypeError("Ei, tüütu sõber, sa ei saa olla vaenlane.")
 
     def get_graveyard(self):
         """Return graveyard list."""
-
         return self._graveyard
 
 
@@ -129,7 +125,6 @@ if __name__ == "__main__":
     world.add_adventurer(friend)
     world.add_adventurer(another_friend)
     print(world.get_adventurer_list())  # -> Sander, Peep ja Toots
-    """
     world.add_monster(annoying_friend)
     # Ei, tüütu sõber, sa ei saa olla vaenlane.
     print(world.get_monster_list())  # -> []
@@ -146,7 +141,7 @@ if __name__ == "__main__":
     print(big_ogre)  # -> "Big Ogre of type Ogre, Power: 120."
     print(zombie)  # -> "Undead Rat of type Zombie, Power: 10."
     world.add_monster(goblin_spear)
-
+    """
     print()
     print("Mängime esimese seikluse läbi!")
     world.add_strongest_adventurer("Druid")
