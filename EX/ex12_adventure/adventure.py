@@ -29,11 +29,14 @@ class Adventurer:
 
     def add_experience(self, exp: int):
         """Increase experience."""
+        a = self.experience
         self.experience += exp
         if self.experience > 99:
             self.power = self.power + (self.experience // 10)
             self.experience = 0
         if self.experience < 0:
+            if a > 0:
+                self.experience = a
             self.experience = 0
 
 class Monster:
