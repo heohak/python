@@ -33,6 +33,8 @@ class Adventurer:
         if self.experience > 99:
             self.power = self.power + (self.experience // 10)
             self.experience = 0
+        if self.experience < 0:
+            self.experience = 0
 
 class Monster:
     """Adventurer opponent."""
