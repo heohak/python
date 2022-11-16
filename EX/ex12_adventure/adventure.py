@@ -19,9 +19,6 @@ class Adventurer:
             self.power = 10
             print("Ei maksa liiga tugevaks ka ennast alguses teha!")
 
-        if self.experience < 0:
-            self.experience = 0
-
     def __repr__(self):
         """Character representation."""
         return f"{self.name}, the {self.class_type}, Power: {self.power}, Experience: {self.experience}."
@@ -34,6 +31,8 @@ class Adventurer:
         """Increase experience."""
         if self.experience > 99:
             self.power = self.power + (self.experience // 10)
+            self.experience = 0
+        elif self.experience < 0:
             self.experience = 0
         else:
             self.experience += exp
