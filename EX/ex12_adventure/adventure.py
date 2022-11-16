@@ -2,7 +2,7 @@
 
 
 class Adventurer:
-    """Normal characater."""
+    """Normal character."""
 
     def __init__(self, name: str, class_type: str, power: int, experience: int = 0):
         """Construct."""
@@ -29,11 +29,10 @@ class Adventurer:
 
     def add_experience(self, exp: int):
         """Increase experience."""
+        self.experience = self.experience + exp
         if self.experience > 99:
             self.power = self.power + (self.experience // 10)
             self.experience = 0
-        else:
-            self.experience += exp
 
 
 class Monster:
@@ -52,7 +51,6 @@ class Monster:
     @property
     def name(self):
         """Name."""
-
         if self.type == "Zombie":
             return f"Undead {self._name}"
         else:
