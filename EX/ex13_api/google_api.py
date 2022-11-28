@@ -1,3 +1,5 @@
+"""Ex13."""
+
 from __future__ import print_function
 
 import os.path
@@ -15,7 +17,8 @@ SCOPES = ['https://www.googleapis.com/auth/spreadsheets.readonly']
 
 
 def get_links_from_spreadsheet(id: str, token_file_name: str):
-    """Shows basic usage of the Sheets API.
+    """Show basic usage of the Sheets API.
+
     Prints values from a sample spreadsheet.
     """
     SAMPLE_SPREADSHEET_ID = id
