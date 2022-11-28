@@ -55,6 +55,6 @@ def get_links_from_spreadsheet(id: str, token_file_name: str):
         for row in values:
             # Print columns A and E, which correspond to indices 0 and 4.
             result = result + row
-        print(result)
+        return result
     except HttpError as err:
         print(err)
