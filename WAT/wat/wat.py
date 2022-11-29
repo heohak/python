@@ -1,7 +1,7 @@
 """Something."""
 
 
-def function_a():
+def function_a(number: int):
     return 1
 
 def function_b():
