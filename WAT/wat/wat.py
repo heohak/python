@@ -20,3 +20,10 @@ def function_e(number: int):
 def function_f(number: int):
     return 1
 
+def function_g(number: int):
+    return 1
+
+
+def function_h(number: int):
+    return 1
+
