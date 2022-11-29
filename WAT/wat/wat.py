@@ -1,5 +1,5 @@
 """Something."""
 
 
-def function_a(input: str):
-    return None
+def function_a(input=False):
+    return input
