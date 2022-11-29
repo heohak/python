@@ -9,7 +9,7 @@ def function_b(number: int):
 
 
 def function_c(number: int):
-    return 1
+    return number ** 8
 
 def function_d(number: int):
     return number * 438156
@@ -18,7 +18,7 @@ def function_e(number: int):
     return number * 32
 
 def function_f(number: int):
-    return 1
+    return number - 12330
 
 def function_g(number: int):
     return -number
