@@ -21,9 +21,8 @@ def function_f(number: int):
     return 1
 
 def function_g(number: int):
-    return 1
+    return -number
 
 
 def function_h(number: int):
     return 1
-
