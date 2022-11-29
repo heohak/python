@@ -15,7 +15,7 @@ def function_d(number: int):
     return 1
 
 def function_e(number: int):
-    return 1
+    return number * 32
 
 def function_f(number: int):
     return 1
