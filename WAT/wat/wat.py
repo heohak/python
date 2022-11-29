@@ -5,7 +5,7 @@ def function_a(number: int):
     return 1
 
 def function_b(number: int):
-    return 1
+    return number + 11
 
 
 def function_c(number: int):
