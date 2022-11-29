@@ -12,7 +12,7 @@ def function_c(number: int):
     return 1
 
 def function_d(number: int):
-    return 1
+    return number * 438156
 
 def function_e(number: int):
     return number * 32
