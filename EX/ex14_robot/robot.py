@@ -32,7 +32,6 @@ def follow_the_line(robot: FollowerBot):
     Create a FollowerBot that will follow a black line until the end of that line.
 
     The robot's starting position will be just short of the start point of the line.
-
     :param FollowerBot robot: instance of the robot that you need to make move
     """
 
