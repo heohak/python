@@ -39,7 +39,6 @@ def follow_the_line(robot: FollowerBot):
     The robot's starting position will be just short of the start point of the line.
     :param FollowerBot robot: instance of the robot that you need to make move
     """
-    pass
 
 
 
@@ -50,5 +49,3 @@ def the_true_follower(robot: FollowerBot):
     :param FollowerBot robot: instance of the robot that you need to make move
     """
 
-
-follow_the_line(FollowerBot())
