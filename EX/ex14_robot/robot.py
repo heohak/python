@@ -34,9 +34,8 @@ def drive_to_line(robot: FollowerBot):
 
 def follow_the_line(robot: FollowerBot):
     """
-    Create a FollowerBot that will follow a black line until the end of that line.
+    Create a FollowerBot that will follow the black line on the track.
 
-    The robot's starting position will be just short of the start point of the line.
     :param FollowerBot robot: instance of the robot that you need to make move
     """
 
@@ -48,4 +47,3 @@ def the_true_follower(robot: FollowerBot):
 
     :param FollowerBot robot: instance of the robot that you need to make move
     """
-
