@@ -8,6 +8,7 @@ import csv
 
 class Child:
     """Child class."""
+
     def __init__(self, name, country):
         """Child constructor."""
         self.name = name
@@ -16,6 +17,7 @@ class Child:
 
 class World:
     """World class."""
+
     def __init__(self):
         """World constructor."""
         self.nice_list = []
@@ -56,6 +58,7 @@ class World:
 
 class Product:
     """Product class."""
+
     def __init__(self, name, price, production_time, weight):
         """Product constructor."""
         self.name = name
@@ -73,6 +76,7 @@ API_URL = """https://cs.ttu.ee/services/xmas/gift?"""
 
 class Warehouse:
     """Warehouse class."""
+
     def __init__(self):
         """Warehouse constructor."""
         self.products = {}

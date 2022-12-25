@@ -1,4 +1,4 @@
-"""Test for the Santa's Workshop exercise"""
+"""Test for the Santa's Workshop exercise."""
 from santa import World, Child, Warehouse
 
 
@@ -50,7 +50,7 @@ def test_product_not_in_factory():
     """Test that the product is not in the factory."""
     warehouse = Warehouse()
     result = warehouse.get_product_from_factory("helicopter")
-    assert result == None
+    assert result is None
 
 
 def test_product_from_factory():
