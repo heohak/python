@@ -7,13 +7,17 @@ import csv
 
 
 class Child:
+    """Child class."""
     def __init__(self, name, country):
+        """Child constructor."""
         self.name = name
         self.country = country
 
 
 class World:
+    """World class."""
     def __init__(self):
+        """World constructor."""
         self.nice_list = []
         self.naughty_list = []
         self.wishlist = {}
@@ -51,25 +55,30 @@ class World:
 
 
 class Product:
+    """Product class."""
     def __init__(self, name, price, production_time, weight):
+        """Product constructor."""
         self.name = name
         self.price = price
         self.production_time = production_time
         self.weight = weight
 
     def __repr__(self):
+        """Product representation."""
         return f"Product({self.name}, {self.price}, {self.production_time}, {self.weight})"
 
 
-API_URL = "https://cs.ttu.ee/services/xmas/gift?"
+API_URL = """https://cs.ttu.ee/services/xmas/gift?"""
 
 
 class Warehouse:
+    """Warehouse class."""
     def __init__(self):
+        """Warehouse constructor."""
         self.products = {}
 
     def get_product_from_factory(self, name: str):
-        """"Get product from factory."""
+        """Get product from factory."""
         qs = urllib.parse.quote_plus(name)
         try:
             with urllib.request.urlopen(API_URL + "name=" + qs) as f:
