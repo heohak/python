@@ -134,7 +134,15 @@ def rainbows(field: str, lower=False) -> int:
     :param field: string to search rainbows from
     :return: number of rainbows in the string
     """
-    pass
+    if field == "":
+        return 0
+
+    if field[0] == "r":
+        if len(field) >= 7 and field[1:7] == "ainbow":
+            return 1 + rainbows(field[7:])
+    else:
+        return rainbows(field[1:])
+
 
 
 def longest_substring(text: str) -> str:
@@ -338,9 +346,7 @@ class Hotel:
 #print(get_names_from_results("ago 123,peeter 11,kitty11!! 33", 11))
 #print(get_names_from_results("ago 123,peeter 11,kusti riin 14", 12))
 
-print(tic_tac_toe([[1, 2, 1], [2, 1, 2], [2, 2, 1]]))
-print(tic_tac_toe([[1, 0, 1], [2, 1, 2], [2, 2, 0]]))
-print(tic_tac_toe([[2, 2, 2], [0, 2, 0], [0, 1, 0]]))
+
 
 
 
