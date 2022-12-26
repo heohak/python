@@ -37,7 +37,15 @@ def close_far(a: int, b: int, c: int) -> bool:
     close_far(1, 2, 3) => False
     close_far(4, 1, 3) => True
     """
-    pass
+    list1 = [a, b, c]
+    list2 = sorted(list1)
+    x1 = list2[-1] - list2[-2]
+    x2 = list2[-1] - list2[-3]
+    x3 = list2[-2] - list2[-3]
+    if (x1 == 1 and x2 >= 2 and x3 >= 2) or (x1 >= 2 and x2 == 1 and x3 >= 2) or (x1 >= 2 and x2 >= 2 and x3 == 1):
+        return True
+    else:
+        return False
 
 
 def get_names_from_results(results_string: str, min_result: int) -> list:
@@ -297,7 +305,9 @@ class Hotel:
         """
         pass
 
-print(find_capital_letters("aCFd"))
+print(close_far(1, 2, 10))
+print(close_far(1, 2, 3))
+print(close_far(4, 1, 3))
 
 
 
