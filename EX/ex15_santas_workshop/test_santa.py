@@ -1,5 +1,35 @@
 """Test for the Santa's Workshop exercise."""
-from santa import World, Child, Warehouse
+from santa import World, Child, Warehouse, Product
+
+
+def test_class_child():
+    """Test the child class."""
+    child = Child("Lexie", "Canada")
+    assert child.name == "Lexie"
+    assert child.country == "Canada"
+
+
+def test_class_world():
+    """Test the world class."""
+    world = World()
+    assert world.nice_list == []
+    assert world.naughty_list == []
+    assert world.wishlist == {}
+
+
+def test_class_warehouse():
+    """Test the warehouse class."""
+    warehouse = Warehouse()
+    assert warehouse.products == {}
+
+
+def test_class_product():
+    """Test the product class."""
+    product = Product("New phone", 100, 9, 200)
+    assert product.name == "New phone"
+    assert product.price == 100
+    assert product.production_time == 9
+    assert product.weight == 200
 
 
 def test_nice_list_empty():
