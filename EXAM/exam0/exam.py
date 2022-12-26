@@ -140,6 +140,8 @@ def rainbows(field: str, lower=False) -> int:
     if field[0] == "r":
         if len(field) >= 7 and field[1:7] == "ainbow":
             return 1 + rainbows(field[7:])
+        else:
+            return rainbows(field[1:])
     else:
         return rainbows(field[1:])
 
