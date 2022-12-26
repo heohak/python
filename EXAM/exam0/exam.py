@@ -42,7 +42,7 @@ def close_far(a: int, b: int, c: int) -> bool:
     x1 = abs(list2[-1] - list2[-2])
     x2 = abs(list2[-1] - list2[-3])
     x3 = abs(list2[-2] - list2[-3])
-    if (x1 == 1 and x2 >= 2 and x3 >= 2) or (x1 >= 2 and x2 == 1 and x3 >= 2) or (x1 >= 2 and x2 >= 2 and x3 == 1):
+    if (x1 <= 1 and x2 >= 2 and x3 >= 2) or (x1 >= 2 and x2 <= 1 and x3 >= 2) or (x1 >= 2 and x2 >= 2 and x3 <= 1):
         return True
     else:
         return False
