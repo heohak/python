@@ -37,12 +37,9 @@ def close_far(a: int, b: int, c: int) -> bool:
     close_far(1, 2, 3) => False
     close_far(4, 1, 3) => True
     """
-    list1 = [a, b, c]
-    list2 = sorted(list1)
-    x1 = abs(list2[-1] - list2[-2])
-    x2 = abs(list2[-1] - list2[-3])
-    x3 = abs(list2[-2] - list2[-3])
-    if (x1 <= 1 and x2 >= 2 and x3 >= 2) or (x1 >= 2 and x2 <= 1 and x3 >= 2) or (x1 >= 2 and x2 >= 2 and x3 <= 1):
+    if abs(c - a) <= 1 and abs(b - a) >= 2 and abs(b - c) >= 2:
+        return True
+    elif abs(b - a) <= 1 and abs(c - b) >= 2 and abs(c - a) >= 2:
         return True
     else:
         return False
