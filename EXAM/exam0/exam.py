@@ -64,14 +64,16 @@ def get_names_from_results(results_string: str, min_result: int) -> list:
     get_names_from_results("ago 123,peeter 11,kusti riin 14", 12) => ["ago", "kusti riin"]
     """
     split1 = results_string.split(",")
+    print(split1)
     x = []
     for element in split1:
         newe = element.rsplit(" ", 1)
         x.append(newe)
+    print(x)
     final = []
     for i in x:
         if int(i[-1]) >= min_result:
-            if len(i) != 1 :
+            if len(i) != 1:
                 final.append(i[0])
     return final
 
@@ -97,7 +99,24 @@ def tic_tac_toe(game: list) -> int:
     :param game
     :return: winning player id
     """
-    pass
+    if game[0][0] == game[1][0] == game[2][0]:
+        return game[0][0]
+    elif game[0][1] == game[1][1] == game[2][1]:
+        return game[0][1]
+    elif game[0][2] == game[1][2] == game[2][2]:
+        return game[0][2]
+    elif game[0][0] == game[0][1] == game[0][2]:
+        return game[0][0]
+    elif game[1][0] == game[1][1] == game[1][2]:
+        return game[1][0]
+    elif game[2][0] == game[2][1] == game[2][2]:
+        return game[2][0]
+    elif game[0][0] == game[1][1] == game[2][2]:
+        return game[0][0]
+    elif game[0][2] == game[1][1] == game[2][0]:
+        return game[0][2]
+    else:
+        return 0
 
 
 def rainbows(field: str, lower=False) -> int:
@@ -313,11 +332,18 @@ class Hotel:
         """
         pass
 
-print(get_names_from_results("ago 123,peeter 11", 0))
-print(get_names_from_results("ago 123,peeter 11,33", 10))
-print(get_names_from_results("ago 123,peeter 11", 100))
-print(get_names_from_results("ago 123,peeter 11,kitty11!! 33", 11))
-print(get_names_from_results("ago 123,peeter 11,kusti riin 14", 12))
+#print(get_names_from_results("ago 123,peeter 11", 0))
+#print(get_names_from_results("ago 123,peeter 11,33", 10))
+#print(get_names_from_results("ago 123,peeter 11", 100))
+#print(get_names_from_results("ago 123,peeter 11,kitty11!! 33", 11))
+#print(get_names_from_results("ago 123,peeter 11,kusti riin 14", 12))
+
+print(tic_tac_toe([[1, 2, 1], [2, 1, 2], [2, 2, 1]]))
+print(tic_tac_toe([[1, 0, 1], [2, 1, 2], [2, 2, 0]]))
+print(tic_tac_toe([[2, 2, 2], [0, 2, 0], [0, 1, 0]]))
+
+
+
 
 
 """
