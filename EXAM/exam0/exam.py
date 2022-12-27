@@ -171,7 +171,23 @@ def longest_substring(text: str) -> str:
     abBcd => Bcd
     '' -> ''
     """
-    pass
+    longest = ""
+    char_set = set()
+    current_substring = ""
+    for c in text:
+        if c.lower() not in char_set:
+            char_set.add(c.lower())
+            current_substring += c
+        else:
+            if len(current_substring) > len(longest):
+                longest = current_substring
+            char_set.clear()
+            char_set.add(c.lower())
+            current_substring = c
+    if len(current_substring) > len(longest):
+        longest = current_substring
+    return longest
+
 
 
 class Student:
@@ -348,11 +364,12 @@ class Hotel:
         """
         pass
 
-print(get_names_from_results("ago 123,peeter 11", 0))
-print(get_names_from_results("ago 123,peeter 11,33", 10))
-print(get_names_from_results("ago 123,peeter 11", 100))
-print(get_names_from_results("ago 123,peeter 11,kitty11!! 33", 11))
-print(get_names_from_results("ago 123,peeter 11,kusti riin 14", 12))
+print(longest_substring("aaa"))
+print(longest_substring("abc"))
+print(longest_substring("abccba"))
+print(longest_substring("babcdEFghij"))
+print(longest_substring("abBcd"))
+print(longest_substring(""))
 
 
 
