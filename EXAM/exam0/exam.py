@@ -171,22 +171,32 @@ def longest_substring(text: str) -> str:
     abBcd => Bcd
     '' -> ''
     """
-    longest = ""
-    char_set = set()
-    current_substring = ""
-    for c in text:
-        if c.lower() not in char_set:
-            char_set.add(c.lower())
-            current_substring += c
-        else:
-            if len(current_substring) > len(longest):
-                longest = current_substring
-            char_set.clear()
-            char_set.add(c.lower())
-            current_substring = c
-    if len(current_substring) > len(longest):
-        longest = current_substring
-    return longest
+    size = len(text)
+    # Intializing the two pointers and the Set
+    head = 0
+    tail = 0
+    # Substrings are not explicitly stored but is kept by this head and tail pointer
+    chars = set()
+
+    max_len = 1
+    s = 0  # Starting index of the resultant substring
+    e = 0  # Ending Index of the resultant substring
+    # Both inclusive
+
+    for tail in range(size):
+        while text[tail] in chars:
+            chars.remove(text[head])
+            head += 1
+
+        chars.add(text[tail])
+
+        if max_len < (tail - head + 1):
+            s = head
+            e = tail
+            max_len = e - s + 1
+
+    result_string = text[s: e + 1]
+    return result_string
 
 
 
@@ -207,7 +217,12 @@ def create_student(name: str, grades: list, credit_points: int) -> Student:
     Round the average grade up to three decimal places.
     If the list of grades is empty, the average grade will be 0.
     """
-    pass
+    average_grade = round(sum(grades) / len(grades), 3)
+    if not grades:
+        return Student(name, 0, credit_points)
+    else:
+        return Student(name, average_grade, credit_points)
+
 
 
 def get_top_student_with_credit_points(students: list, min_credit_points: int):
@@ -217,7 +232,13 @@ def get_top_student_with_credit_points(students: list, min_credit_points: int):
     If there are no students with enough credit points, return None.
     If several students have the same average score, return the first.
     """
-    pass
+    result = []
+    for student in students:
+        if max(student.average_grade) and student.credit_points > min_credit_points:
+            result.append(student)
+        else:
+            return None
+    return result[0]
 
 
 def add_result_to_student(student: Student, grades_count: int, new_grade: int, credit_points) -> Student:
@@ -252,7 +273,10 @@ def add_result_to_student(student: Student, grades_count: int, new_grade: int, c
 
     Return the modified student object.
     """
-    pass
+    new_average = round(((grades_count * student.average_grade + new_grade) / grades_count + 1), 3)
+    return Student(student.name, new_average, credit_points)
+
+
 
 
 def get_ordered_students(students: list) -> list:
@@ -261,7 +285,8 @@ def get_ordered_students(students: list) -> list:
 
     credit points (higher first), average_grade (higher first), name (a to z).
     """
-    pass
+    sorted_list = sorted(students, key=lambda x: (x.credit_points, x.average_grade, x.name))
+    return sorted_list
 
 
 class Room:
@@ -364,12 +389,7 @@ class Hotel:
         """
         pass
 
-print(longest_substring("aaa"))
-print(longest_substring("abc"))
-print(longest_substring("abccba"))
-print(longest_substring("babcdEFghij"))
-print(longest_substring("abBcd"))
-print(longest_substring(""))
+
 
 
 
