@@ -63,13 +63,13 @@ def get_names_from_results(results_string: str, min_result: int) -> list:
     get_names_from_results("ago 123,peeter 11,kitty11!! 33", 11) => ["ago", "peeter",  "kitty11!!"]
     get_names_from_results("ago 123,peeter 11,kusti riin 14", 12) => ["ago", "kusti riin"]
     """
+    if not results_string:
+        return []
     split1 = results_string.split(",")
-    print(split1)
     x = []
     for element in split1:
         newe = element.rsplit(" ", 1)
         x.append(newe)
-    print(x)
     final = []
     for i in x:
         if int(i[-1]) >= min_result:
@@ -348,15 +348,12 @@ class Hotel:
         """
         pass
 
-#print(get_names_from_results("ago 123,peeter 11", 0))
-#print(get_names_from_results("ago 123,peeter 11,33", 10))
-#print(get_names_from_results("ago 123,peeter 11", 100))
-#print(get_names_from_results("ago 123,peeter 11,kitty11!! 33", 11))
-#print(get_names_from_results("ago 123,peeter 11,kusti riin 14", 12))
+print(get_names_from_results("ago 123,peeter 11", 0))
+print(get_names_from_results("ago 123,peeter 11,33", 10))
+print(get_names_from_results("ago 123,peeter 11", 100))
+print(get_names_from_results("ago 123,peeter 11,kitty11!! 33", 11))
+print(get_names_from_results("ago 123,peeter 11,kusti riin 14", 12))
 
-print(rainbows("rainbowThisIsJustSomeNoise"))
-print(rainbows("WoBniar"))
-print(rainbows("rainbowobniar"))
 
 
 
