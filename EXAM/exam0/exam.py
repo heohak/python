@@ -287,7 +287,7 @@ def get_ordered_students(students: list) -> list:
 
     credit points (higher first), average_grade (higher first), name (a to z).
     """
-    sorted_list = sorted(students, key=lambda x: (x.credit_points, x.average_grade, x.name))
+    sorted_list = sorted(students, key=lambda x: (-x.credit_points, -x.average_grade, x.name))
     return sorted_list
 
 
