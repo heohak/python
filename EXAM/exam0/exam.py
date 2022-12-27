@@ -134,11 +134,17 @@ def rainbows(field: str, lower=False) -> int:
     :param field: string to search rainbows from
     :return: number of rainbows in the string
     """
-    if field == "":
+    field = field.lower()
+    if len(field) < 7:
         return 0
 
     if field[0] == "r":
         if len(field) >= 7 and field[1:7] == "ainbow":
+            return 1 + rainbows(field[7:])
+        else:
+            return rainbows(field[1:])
+    elif field[0] == "w":
+        if len(field) >= 7 and field[1:7] == "obniar":
             return 1 + rainbows(field[7:])
         else:
             return rainbows(field[1:])
@@ -348,6 +354,9 @@ class Hotel:
 #print(get_names_from_results("ago 123,peeter 11,kitty11!! 33", 11))
 #print(get_names_from_results("ago 123,peeter 11,kusti riin 14", 12))
 
+print(rainbows("rainbowThisIsJustSomeNoise"))
+print(rainbows("WoBniar"))
+print(rainbows("rainbowobniar"))
 
 
 
