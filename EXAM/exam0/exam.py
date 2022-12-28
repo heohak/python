@@ -170,15 +170,26 @@ def longest_substring(text: str) -> str:
     abBcd => Bcd
     '' -> ''
     """
-    if not text:
-        return ""
-    text = text.lower()
-    x = []
-    for i in range(len(text)):
-        for j in range(i + 1, len(text) + 1):
-            if len(set(text[i:j])) == len(text[i:j]):
-                x.append(text[i:j])
-    return max(x, key=len)
+    start = 0
+    end = 0
+    char_count = {}
+    max_length = 0
+    result = ""
+
+    while end < len(text):
+        char = text[end]
+        if char not in char_count or char_count[char] == 0:
+            char_count[char] = 1
+        else:
+            char_count[char] -= 1
+
+        if end - start + 1 > max_length:
+            max_length = end - start + 1
+            result = text[start:end + 1]
+
+        end += 1
+
+    return result
 
 class Student:
     """Student class."""
@@ -288,7 +299,7 @@ class Room:
         - the room is booked.
         Otherwise, add the feature to the room and return True
         """
-        if feature in self.features or self.booked == True:
+        if feature in self.features or self.booked:
             return False
         else:
             self.features.append(feature)
@@ -337,7 +348,7 @@ class Hotel:
         """
         result = []
         for room in self.rooms:
-            if room.booked == False:
+            if not room.booked:
                 result.append(room)
         if not result:
             return None
@@ -348,7 +359,7 @@ class Hotel:
 
     def get_available_rooms(self) -> list:
         """Return a list of available (not booked) rooms."""
-        return [room for room in self.rooms if room.booked == False]
+        return [room for room in self.rooms if not room.booked]
 
     def get_rooms(self) -> list:
         """Return all the rooms (both booked and available)."""
@@ -356,7 +367,7 @@ class Hotel:
 
     def get_booked_rooms(self) -> list:
         """Return all the booked rooms."""
-        return [room for room in self.rooms if room.booked == True]
+        return [room for room in self.rooms if room.booked]
 
     def get_feature_profits(self) -> dict:
         """
@@ -378,7 +389,7 @@ class Hotel:
         """
         result = {}
         for room in self.rooms:
-            if room.booked == True:
+            if room.booked:
                 for feature in room.features:
                     if feature not in result:
                         result[feature] = room.price
