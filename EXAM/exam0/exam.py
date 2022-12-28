@@ -170,26 +170,36 @@ def longest_substring(text: str) -> str:
     abBcd => Bcd
     '' -> ''
     """
-    start = 0
-    end = 0
-    char_count = {}
-    max_length = 0
-    result = ""
+    # Edge case: empty string
+    if not text:
+        return ""
 
-    while end < len(text):
-        char = text[end]
-        if char not in char_count or char_count[char] == 0:
-            char_count[char] = 1
+    # Initialize variables
+    max_substring = text[0]
+    current_substring = ""
+    seen_chars = set()
+
+    for char in text:
+        # Check if char has been seen
+        if char in seen_chars:
+            # Update max substring if necessary
+            if len(current_substring) > len(max_substring):
+                max_substring = current_substring
+
+            # Reset current substring
+            current_substring = ""
+            seen_chars = set()
         else:
-            char_count[char] -= 1
+            # Add char to current substring and seen_chars
+            current_substring += char
+            seen_chars.add(char)
 
-        if end - start + 1 > max_length:
-            max_length = end - start + 1
-            result = text[start:end + 1]
+    # Check if final current substring is the longest
+    if len(current_substring) > len(max_substring):
+        max_substring = current_substring
 
-        end += 1
+    return max_substring
 
-    return result
 
 class Student:
     """Student class."""
