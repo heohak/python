@@ -170,35 +170,35 @@ def longest_substring(text: str) -> str:
     abBcd => Bcd
     '' -> ''
     """
-    # Edge case: empty string
-    if not text:
-        return ""
+    size = len(text)
+    head = 0
+    tail = 0
+    # Substrings are not explicitly stored but is kept by this head and tail pointer
+    chars = dict()  # HashMap in Python
 
-    # Initialize variables
-    max_substring = text[0]
-    current_substring = ""
-    seen_chars = set()
+    max_len = 1
+    s = 0  # Starting index of the resultant substring
+    e = 0  # Ending Index of the resultant substring
+    # Both inclusive
 
-    for char in text:
-        # Check if char has been seen
-        if char in seen_chars:
-            # Update max substring if necessary
-            if len(current_substring) > len(max_substring):
-                max_substring = current_substring
+    for tail in range(size):
+        if text[tail] in chars:
+            # Current tail character already present inside HashMap
+            if chars[text[tail]] >= head:
+                # All characters between head and tail is inside current substring
+                # If the character inside HashMap is after head index, then it is inside this current substring
+                # Hence, the current tail is a duplicate character, reduce the substring
+                head = chars[text[tail]] + 1
 
-            # Reset current substring
-            current_substring = ""
-            seen_chars = set()
-        else:
-            # Add char to current substring and seen_chars
-            current_substring += char
-            seen_chars.add(char)
+        chars[text[tail]] = max(chars.get(text[tail], 0), tail)
 
-    # Check if final current substring is the longest
-    if len(current_substring) > len(max_substring):
-        max_substring = current_substring
+        if max_len < (tail - head + 1):
+            s = head
+            e = tail
+            max_len = e - s + 1
 
-    return max_substring
+    result_string = text[s: e + 1]
+    return result_string
 
 
 class Student:
@@ -453,3 +453,6 @@ if __name__ == '__main__':
     assert hotel.get_most_profitable_feature() == 'tv'
 
     # TODO: try to add a room so that two or more features have the same profit
+
+print(longest_substring("abccba"))
+print(longest_substring("babcdEFghij"))
