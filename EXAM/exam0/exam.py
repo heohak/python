@@ -1,6 +1,7 @@
 """Exam0."""
 from typing import Optional
 
+
 def find_capital_letters(s: str) -> str:
     """
     Return only capital letters from the string.
@@ -78,7 +79,6 @@ def get_names_from_results(results_string: str, min_result: int) -> list:
     return final
 
 
-
 def tic_tac_toe(game: list) -> int:
     """
     Find game winner.
@@ -103,7 +103,7 @@ def tic_tac_toe(game: list) -> int:
         return game[0][0]
     elif game[0][1] == game[1][1] == game[2][1] and game[0][1] != 0:
         return game[0][1]
-    elif game[0][2] == game[1][2] == game[2][2] and game [0][2] != 0:
+    elif game[0][2] == game[1][2] == game[2][2] and game[0][2] != 0:
         return game[0][2]
     elif game[0][0] == game[0][1] == game[0][2] and game[0][0] != 0:
         return game[0][0]
@@ -152,7 +152,6 @@ def rainbows(field: str, lower=False) -> int:
         return rainbows(field[1:])
 
 
-
 def longest_substring(text: str) -> str:
     """
     Find the longest substring.
@@ -171,34 +170,15 @@ def longest_substring(text: str) -> str:
     abBcd => Bcd
     '' -> ''
     """
-    size = len(text)
-    # Intializing the two pointers and the Set
-    head = 0
-    tail = 0
-    # Substrings are not explicitly stored but is kept by this head and tail pointer
-    chars = set()
-
-    max_len = 1
-    s = 0  # Starting index of the resultant substring
-    e = 0  # Ending Index of the resultant substring
-    # Both inclusive
-
-    for tail in range(size):
-        while text[tail] in chars:
-            chars.remove(text[head])
-            head += 1
-
-        chars.add(text[tail])
-
-        if max_len < (tail - head + 1):
-            s = head
-            e = tail
-            max_len = e - s + 1
-
-    result_string = text[s: e + 1]
-    return result_string
-
-
+    if not text:
+        return ""
+    text = text.lower()
+    x = []
+    for i in range(len(text)):
+        for j in range(i + 1, len(text) + 1):
+            if len(set(text[i:j])) == len(text[i:j]):
+                x.append(text[i:j])
+    return max(x, key=len)
 
 class Student:
     """Student class."""
@@ -224,7 +204,6 @@ def create_student(name: str, grades: list, credit_points: int) -> Student:
         return Student(name, average_grade, credit_points)
 
 
-
 def get_top_student_with_credit_points(students: list, min_credit_points: int):
     """
     Return the student with the highest average grade who has enough credit points.
@@ -241,6 +220,7 @@ def get_top_student_with_credit_points(students: list, min_credit_points: int):
         return sorted_result[0]
     else:
         return None
+
 
 def add_result_to_student(student: Student, grades_count: int, new_grade: int, credit_points) -> Student:
     """
@@ -279,8 +259,6 @@ def add_result_to_student(student: Student, grades_count: int, new_grade: int, c
     return Student(student.name, new_average, new_points)
 
 
-
-
 def get_ordered_students(students: list) -> list:
     """
     Return a new sorted list of students by (down).
@@ -315,6 +293,7 @@ class Room:
         else:
             self.features.append(feature)
             return True
+
     def get_features(self) -> list:
         """Return all the features of the room."""
         return self.features
@@ -367,8 +346,6 @@ class Hotel:
             sorted_result[0].booked = True
             return sorted_result[0]
 
-
-
     def get_available_rooms(self) -> list:
         """Return a list of available (not booked) rooms."""
         return [room for room in self.rooms if room.booked == False]
@@ -408,7 +385,6 @@ class Hotel:
                     else:
                         result[feature] += room.price
         return result
-
 
     def get_most_profitable_feature(self) -> Optional[str]:
         """
