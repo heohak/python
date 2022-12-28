@@ -334,8 +334,6 @@ class Hotel:
     def __init__(self):
         """Initialize hotel."""
         self.rooms = []
-        self.available_rooms = []
-        self.booked_rooms = []
 
     def add_room(self, room: Room) -> bool:
         """
@@ -344,11 +342,11 @@ class Hotel:
         If a room with the given number already exists, do not add a room and return False.
         Otherwise add the room to hotel and return True.
         """
-        if room not in self.rooms:
-            self.rooms.append(room)
-            return True
-        else:
-            return False
+        for r in self.rooms:
+            if r.get_number() == room.get_number():
+                return False
+        self.rooms.append(room)
+        return True
 
     def book_room(self, required_features: list) -> Optional[Room]:
         """
@@ -358,22 +356,21 @@ class Hotel:
         If there are several with the same amount of matching features, return the one with the smallest room number.
         If there is no available rooms, return None
         """
-        for room in self.rooms:
-            if not room.booked:
-                self.available_rooms.append(room)
-        if not self.available_rooms:
+        available_rooms = [r for r in self.rooms if not r.booked]
+        if not available_rooms:
             return None
-        self.available_rooms.sort(key=lambda r: r.get_number())
-        self.available_rooms.sort(key=lambda r: len(set(r.get_features()) & set(required_features)), reverse=True)
-        self.booked_rooms.append(self.available_rooms[0])
-        return self.available_rooms[0]
+
+        available_rooms.sort(key=lambda r: r.get_number())
+        available_rooms.sort(key=lambda r: len([f for f in required_features if f in r.get_features()]), reverse=True)
+        return available_rooms[0]
+
 
 
 
 
     def get_available_rooms(self) -> list:
         """Return a list of available (not booked) rooms."""
-        return self.available_rooms
+        return [r for r in self.rooms if not r.booked]
 
     def get_rooms(self) -> list:
         """Return all the rooms (both booked and available)."""
@@ -381,7 +378,7 @@ class Hotel:
 
     def get_booked_rooms(self) -> list:
         """Return all the booked rooms."""
-        return self.booked_rooms
+        return [r for r in self.rooms if r.booked]
 
     def get_feature_profits(self) -> dict:
         """
@@ -401,15 +398,14 @@ class Hotel:
         'd': 200
         }
         """
-        result = {}
-        for room in self.booked_rooms:
-            for feature in room.features:
-                if feature not in result:
-                    result[feature] = room.price
-                else:
-                    result[feature] += room.price
-        return result
-
+        profits = {}
+        for r in self.rooms:
+            if r.booked:
+                for f in r.get_features():
+                    if f not in profits:
+                        profits[f] = 0
+                    profits[f] += r.get_price()
+        return profits
 
 
     def get_most_profitable_feature(self) -> Optional[str]:
@@ -421,7 +417,7 @@ class Hotel:
         If there are several with the same max value, return the feature which is alphabetically lower (a < z)
         If there are no features booked, return None.
         """
-        if not self.booked_rooms:
+        if not self.get_booked_rooms():
             return None
         else:
             return max(self.get_feature_profits(), key=self.get_feature_profits().get)
