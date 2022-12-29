@@ -69,7 +69,16 @@ def index_index_value(nums: list) -> int:
     :param nums: List of integer
     :return: Value at index of value at index of last element's value
     """
-    pass
+    a = nums[-1]
+    if a >= len(nums):
+        return -1
+    else:
+        b = nums[a]
+    if b >= len(nums):
+        return -2
+    else:
+        x = nums[b]
+    return x
 
 
 def count_clumps(nums: list) -> int:
@@ -87,4 +96,3 @@ def count_clumps(nums: list) -> int:
     :return: Number of clumps.
     """
     pass
-
