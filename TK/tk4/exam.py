@@ -95,4 +95,12 @@ def count_clumps(nums: list) -> int:
     :param nums: List of integers.
     :return: Number of clumps.
     """
-    pass
+    count = 0
+    for i in range(len(nums)):
+        if nums.count(i) > 1:
+            count = count + 1
+    return count
+
+print(count_clumps([1, 2, 2, 3, 4, 4]))
+print(count_clumps([1, 1, 1, 1, 1]))
+print(count_clumps([1, 2, 3]))
