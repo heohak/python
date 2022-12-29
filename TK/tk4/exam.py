@@ -95,6 +95,8 @@ def count_clumps(nums: list) -> int:
     :param nums: List of integers.
     :return: Number of clumps.
     """
+    if not nums:
+        return 0
     # Initialize the clump count to 0
     clump_count = 0
     result = nums.count(nums[0]) == len(nums)
@@ -109,9 +111,6 @@ def count_clumps(nums: list) -> int:
             # Skip the rest of the clump by continuing the loop
             while i < len(nums) and nums[i] == nums[i - 1]:
                 i += 1
-
-
-
     return clump_count
 
 
