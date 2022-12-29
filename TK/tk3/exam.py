@@ -137,6 +137,6 @@ def mirror_ends(s: str) -> str:
             result.append(string)
     return max(result)
 
-print(mirror_ends("abXYZba"))
-print(mirror_ends("abca"))
-print(mirror_ends("aba"))
+#print(mirror_ends("abXYZba"))
+#print(mirror_ends("abca"))
+#print(mirror_ends("aba"))
