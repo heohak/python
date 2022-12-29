@@ -122,5 +122,19 @@ def remove_in_middle(text, to_remove):
     :param to_remove: substring to be removed.
     :return: string with middle substrings removed.
     """
-    a1 = ''.join(text.rsplit(to_remove, text.count(to_remove)))
-    return a1
+    if to_remove not in text:
+        return text
+
+    first_index = text.find(to_remove)
+    last_index = text.rfind(to_remove)
+    if first_index == last_index:
+        return text
+    else:
+        return text[:first_index + len(to_remove)] + text[last_index:]
+
+print(remove_in_middle("abc", "def"))
+print(remove_in_middle("abcabcabc", "abc"))
+print(remove_in_middle("abcdabceabcabc", "abc"))
+print(remove_in_middle("abcd", "abc"))
+print(remove_in_middle("abcdabc", "abc"))
+print(remove_in_middle("ABCAaaaAA", "a"))
