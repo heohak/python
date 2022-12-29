@@ -146,8 +146,10 @@ def mirror_ends(s: str) -> str:
             if x == y:
                 result.append(x)
 
-
-    return max(result)
+    if len(result) >= 1:
+        return max(result)
+    else:
+        return ""
 
 
 print(mirror_ends("abXYZba"))
