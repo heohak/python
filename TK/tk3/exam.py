@@ -130,13 +130,26 @@ def mirror_ends(s: str) -> str:
         return ""
 
     result = []
-    string = ""
+    l1 = []
+    l2 = []
+    string1 = ""
+    string2 = ""
     for i in s:
-        string = string + i
-        if string == string[::-1]:
-            result.append(string)
+        string1 = string1 + i
+        l1.append(string1)
+    for j in reversed(s):
+        string2 = string2 + j
+        l2.append(string2)
+
+    for x in l1:
+        for y in l2:
+            if x == y:
+                result.append(x)
+
+
     return max(result)
 
-#print(mirror_ends("abXYZba"))
-#print(mirror_ends("abca"))
-#print(mirror_ends("aba"))
+
+print(mirror_ends("abXYZba"))
+print(mirror_ends("abca"))
+print(mirror_ends("aba"))
