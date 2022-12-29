@@ -122,8 +122,8 @@ def remove_in_middle(text, to_remove):
     :param to_remove: substring to be removed.
     :return: string with middle substrings removed.
     """
-    if to_remove not in text:
-        return text
+    if not text:
+        return ""
 
     first_index = text.find(to_remove)
     last_index = text.rfind(to_remove)
