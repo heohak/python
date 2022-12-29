@@ -95,12 +95,28 @@ def count_clumps(nums: list) -> int:
     :param nums: List of integers.
     :return: Number of clumps.
     """
-    count = 0
-    for i in range(len(nums)):
-        if nums.count(i) > 1:
-            count = count + 1
-    return count
+    # Initialize the clump count to 0
+    clump_count = 0
+    result = nums.count(nums[0]) == len(nums)
+    # Iterate through the elements in nums
+    if result:
+        return 1
+
+    for i in range(1, len(nums)):
+        # If the current element is the same as the previous element, increment the clump count
+        if nums[i] == nums[i - 1]:
+            clump_count += 1
+            # Skip the rest of the clump by continuing the loop
+            while i < len(nums) and nums[i] == nums[i - 1]:
+                i += 1
+
+
+
+    return clump_count
+
+
 
 print(count_clumps([1, 2, 2, 3, 4, 4]))
+print(count_clumps([1, 1, 2, 1, 1]))
 print(count_clumps([1, 1, 1, 1, 1]))
 print(count_clumps([1, 2, 3]))
