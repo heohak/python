@@ -22,7 +22,6 @@ def common_end(a: list, b: list) -> bool:
         return True
     else:
         return False
-    pass
 
 
 def alarm_clock(day: int, vacation: bool) -> str:
@@ -127,4 +126,17 @@ def mirror_ends(s: str) -> str:
     :param s: String
     :return: Mirror image string
     """
-    pass
+    if s == "":
+        return ""
+
+    result = []
+    string = ""
+    for i in s:
+        string = string + i
+        if string == string[::-1]:
+            result.append(string)
+    return max(result)
+
+print(mirror_ends("abXYZba"))
+print(mirror_ends("abca"))
+print(mirror_ends("aba"))
