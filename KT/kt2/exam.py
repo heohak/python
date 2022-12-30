@@ -44,11 +44,9 @@ def take_partial(text: str, leave_count: int, take_count: int) -> str:
     if take_count == 0:
         return ""
     else:
-        while leave_count < len(text):
-            result += text[leave_count:leave_count + take_count]
-            leave_count += take_count + leave_count
-        return result
-
+        for i in range(0, len(text), leave_count + take_count):
+            result += text[i + leave_count:i + leave_count + take_count]
+    return result
 
 
 def min_diff(nums: list) -> int:
