@@ -31,16 +31,26 @@ def only_one_pair(numbers: list) -> bool:
     only_one_pair([1, 2, 1, 3, 1]) => False
     only_one_pair([1, 2, 1, 3, 1, 2]) => False
     """
-    if len(numbers) <= 1:
-        return False
     result = []
-    for number in numbers:
-        if numbers.count(number) == 2:
-            result.append(number)
-        if len(result) == 1:
-            return True
-        else:
-            return False
+    shitlist = []
+    for i in numbers:
+        if numbers.count(i) == 2:
+            if i not in result:
+                result.append(i)
+        if numbers.count(i) > 2:
+            shitlist.append(i)
+
+
+
+    if len(result) == 1 and len(shitlist) == 0:
+        return True
+    else:
+        return False
+
+
+
+
+
 
 
 def pentabonacci(n: int) -> int:
@@ -96,9 +106,6 @@ def swap_dict_keys_and_value_lists(d: dict) -> dict:
 
 
 if __name__ == '__main__':
-    print(last_to_first("ab")) #== "ba"
-    print(last_to_first("")) #==# ""
-    print(last_to_first("hello"))# == "ohell"
 
     print(only_one_pair([1, 2, 3])) #is False
     print(only_one_pair([1])) #is False
