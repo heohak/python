@@ -38,7 +38,17 @@ def take_partial(text: str, leave_count: int, take_count: int) -> str:
     take_partial("abcdef", 1, 0) => ""
     take_partial("Hello world", 3, 3) => "lo ld"
     """
-    pass
+    result = ""
+    if leave_count == 0:
+        return text
+    if take_count == 0:
+        return ""
+    else:
+        while leave_count < len(text):
+            result += text[leave_count:leave_count + take_count]
+            leave_count += take_count + leave_count
+        return result
+
 
 
 def min_diff(nums: list) -> int:
@@ -84,9 +94,9 @@ def get_symbols_by_occurrences(text: str) -> dict:
 
 
 if __name__ == '__main__':
-    print(switch_lasts_and_firsts("ambulance"))  # => "cebulanam"
-    print(switch_lasts_and_firsts("firetruck"))  # => "ckretrufi"
-    print(switch_lasts_and_firsts("car"))  # => "rac"
+   # print(switch_lasts_and_firsts("ambulance"))  # => "cebulanam"
+    #print(switch_lasts_and_firsts("firetruck"))  # => "ckretrufi"
+    #print(switch_lasts_and_firsts("car"))  # => "rac"
 
     print(take_partial("abcdef", 2, 3))  # => "cde"
     print(take_partial("abcdef", 0, 1))  # => "abcdef"
@@ -98,5 +108,5 @@ if __name__ == '__main__':
     print(min_diff([100, 90]))  # => 10
     print(min_diff([1, 100, 1000, 1]))  # => 0
 
-    print(get_symbols_by_occurrences("hello"))  # => {1: ['e', 'o', 'h'], 2: ['l']}
-    print(get_symbols_by_occurrences("abcaba"))  # => {2: ['b'], 1: ['c'], 3: ['a']}
+    #print(get_symbols_by_occurrences("hello"))  # => {1: ['e', 'o', 'h'], 2: ['l']}
+    #print(get_symbols_by_occurrences("abcaba"))  # => {2: ['b'], 1: ['c'], 3: ['a']}
