@@ -39,9 +39,6 @@ def only_one_pair(numbers: list) -> bool:
                 result.append(i)
         if numbers.count(i) > 2:
             shitlist.append(i)
-
-
-
     if len(result) == 1 and len(shitlist) == 0:
         return True
     else:
@@ -75,14 +72,22 @@ def pentabonacci(n: int) -> int:
     :param n: The last term to take into account.
     :return: Total number of odd values.
     """
-    result = []
-
+    odd_values = []
+    counted_1 = False
+    # define the first two terms of the Fibonacci sequence
     a, b = 0, 1
-    while a < n:
-        if a % 2:
-            result.append(a)
+    # loop until the current term is greater than or equal to n
+    while b < n:
+        # if the current term is odd and is not 1, or if it is 1 and has not been counted yet, append it to the list of odd values
+        if (b % 2 == 1 and b != 1) or (b == 1 and not counted_1):
+            odd_values.append(b)
+            # if the current term is 1, set counted_1 to True
+            if b == 1:
+                counted_1 = True
+        # update the current and previous terms
         a, b = b, a + b
-        return result
+    return len(odd_values)
+
 
 
 def swap_dict_keys_and_value_lists(d: dict) -> dict:
@@ -102,22 +107,29 @@ def swap_dict_keys_and_value_lists(d: dict) -> dict:
     swap_dict_keys_and_value_lists({}) => {}
     swap_dict_keys_and_value_lists({1: [2]}) => {2: [1]}
     """
-    pass
+    result = {}
+    for key, value in d.items():
+        for i in value:
+            if i not in result:
+                result[i] = [key]
+            else:
+                result[i].append(key)
+    return result
 
 
 if __name__ == '__main__':
 
-    print(only_one_pair([1, 2, 3])) #is False
-    print(only_one_pair([1])) #is False
-    print(only_one_pair([1, 2, 3, 1]))# is True
-    print(only_one_pair([1, 2, 1, 3, 1])) #is False
-    print(only_one_pair([1, 2, 1, 3, 1, 2])) #is False
+    #print(only_one_pair([1, 2, 3])) #is False
+    #print(only_one_pair([1])) #is False
+    #print(only_one_pair([1, 2, 3, 1]))# is True
+  #  print(only_one_pair([1, 2, 1, 3, 1])) #is False
+  #  print(only_one_pair([1, 2, 1, 3, 1, 2])) #is False
 
-    pentabonacci(5)# == 1
-    pentabonacci(10) #== 3
-    pentabonacci(15)# == 5
+    print(pentabonacci(5))
+    print(pentabonacci(10)) #== 3
+    print(pentabonacci(15))# == 5
 
-    swap_dict_keys_and_value_lists({"a": ["b", "c"]})# == {"b": ["a"], "c": ["a"]}
-    swap_dict_keys_and_value_lists({1: [2, 3], 4: [2, 5]})# == {2: [1, 4], 3: [1], 5: [4]}  # or {2: [4, 1], 3: [1], 5: [4]}
-    swap_dict_keys_and_value_lists({})# == {}
-    swap_dict_keys_and_value_lists({1: [2]})# == {2: [1]}
+    print(swap_dict_keys_and_value_lists({"a": ["b", "c"]}))# == {"b": ["a"], "c": ["a"]}
+    print(swap_dict_keys_and_value_lists({1: [2, 3], 4: [2, 5]}))# == {2: [1, 4], 3: [1], 5: [4]}  # or {2: [4, 1], 3: [1], 5: [4]}
+    print(swap_dict_keys_and_value_lists({}))# == {}
+    print(swap_dict_keys_and_value_lists({1: [2]}))# == {2: [1]}
