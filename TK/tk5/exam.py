@@ -13,8 +13,6 @@ def make_ends(nums: list) -> list:
     :param nums: List of integers.
     :return: List with the first and the last element from the input list.
     """
-    if len(nums) == 1:
-        return [nums[0]]
     return [nums[0], nums[-1]]
 
 
