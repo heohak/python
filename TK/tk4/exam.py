@@ -104,13 +104,12 @@ def count_clumps(nums: list) -> int:
     if result:
         return 1
 
-    for i in range(1, len(nums)):
-        # If the current element is the same as the previous element, increment the clump count
-        if nums[i] == nums[i - 1]:
+    vahe = 0
+
+    for i in nums:
+        if vahe == i:
             clump_count += 1
-            # Skip the rest of the clump by continuing the loop
-            while i < len(nums) and nums[i] == nums[i - 1]:
-                i += 1
+        vahe = i
     return clump_count
 
 
