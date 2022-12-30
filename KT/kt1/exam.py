@@ -53,7 +53,7 @@ def list_move(initial_list: list, amount: int, factor: int) -> list:
     list_move([], 3, 4) => [[], [], []]
     """
     result = []
-    if initial_list == []:
+    if not initial_list:
         for i in range(1, amount + 1):
             result.append(initial_list)
         return result
@@ -100,25 +100,28 @@ def parse_call_log(call_log: str) -> dict:
     :param call_log: the whole log as string
     :return: dictionary with call information
     """
-    if call_log == "":
-        return {}
+    call_info = {}
+    chains = call_log.split(',')
+    for chain in chains:
+        names = chain.split(':')
+        print(names)
+        for i in range(len(names) - 1):
+            caller = names[i]
+            recipient = names[i + 1]
+            if caller in call_info:
+                if recipient not in call_info[caller]:
+                    call_info[caller].append(recipient)
+            else:
+                call_info[caller] = [recipient]
+    return call_info
 
-    list1 = call_log.split(",")
-    print(list1)
-    list2 = []
-    for i in list1:
-        list2.append(i.split(":"))
-    print(list2)
-    result = {}
-    for j in list2:
-        if j[0] not in result:
-            result[j[0]] = [j[1]]
-        elif j[0] in result:
-            result[j[0]].append(j[1])
 
 
-print(list_move(["a", "b", "c"], 3, 0))
-print(list_move(["a", "b", "c"], 3, 1))
-print(list_move([1, 2, 3], 3, 2))
-print(list_move([1, 2, 3], 4, 1))
-print(list_move([], 3, 4))
+
+
+
+#print(parse_call_log(""))
+#print(parse_call_log("ago:kati,mati:malle"))
+#print(parse_call_log("ago:kati,ago:mati,ago:kati"))
+#print(parse_call_log("ago:kati:mati"))
+print(parse_call_log("mati:kalle,kalle:malle:mari:juri,mari:mati"))
