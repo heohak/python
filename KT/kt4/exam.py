@@ -59,6 +59,8 @@ def max_block(s: str) -> int:
     ax_block("abbCCCddBBBxx")m => 3
     max_block("") => 0
     """
+    if len(s) == 0:
+        return 0
     max_length = 0
     for i in range(len(s)):
         length = 1
