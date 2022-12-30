@@ -80,22 +80,19 @@ def min_diff(nums):
     :param nums: List of integers.
     :return: Min diff
     """
-    if nums[0] < len(nums) and nums[-1] < len(nums):
-        if nums[0] > nums[nums[0]]:
-            vahe1 = nums[0] - nums[nums[0]]
-        else:
-            vahe1 = nums[nums[0]] - nums[0]
-        if nums[-1] > nums[nums[-1]]:
-            vahe2 = nums[-1] - nums[nums[-1]]
-        else:
-            vahe2 = nums[nums[-1]] - nums[-1]
-
+    if nums[0] >= len(nums) and nums[-1] >= len(nums):
+        return -1
+    if nums[0] >= len(nums):
+        return abs(nums[-1] - nums[nums[-1]])
+    if nums[-1] >= len(nums):
+        return abs(nums[0] - nums[nums[0]])
+    else:
+        vahe1 = abs(nums[0] - nums[nums[0]])
+        vahe2 = abs(nums[-1] - nums[nums[-1]])
         if vahe1 < vahe2:
             return vahe1
         else:
             return vahe2
-    else:
-        return -1
 
 
 def word_numeration(words: list) -> list:
