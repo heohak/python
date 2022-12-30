@@ -56,10 +56,18 @@ def max_block(s: str) -> int:
     A block is a run of adjacent chars that are the same.
 
     max_block("hoopla") => 2
-    max_block("abbCCCddBBBxx") => 3
+    ax_block("abbCCCddBBBxx")m => 3
     max_block("") => 0
     """
-    pass
+    max_length = 0
+    for i in range(len(s)):
+        length = 1
+        while i + 1 < len(s) and s[i] == s[i + 1]:
+            length += 1
+            i += 1
+        max_length = max(max_length, length)
+    return max_length
+
 
 
 def create_dictionary_from_directed_string_pairs(pairs: list) -> dict:
@@ -93,7 +101,5 @@ def create_dictionary_from_directed_string_pairs(pairs: list) -> dict:
     """
     pass
 
-print(sum_elements_around_last_three([1, 3, 7]))
-print(sum_elements_around_last_three([1, 2, 3, 4, 6, 4, 3, 4, 5, 3, 4, 5, 6]))
-print(sum_elements_around_last_three([1, 2, 3, 4, 6, 4, 3, 4, 5, 3, 3, 2, 3]))
-print(sum_elements_around_last_three([1, 2, 3]))
+print(max_block("hoopla"))
+print(max_block("abbCCCddBBBxx"))
