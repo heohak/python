@@ -115,10 +115,21 @@ def word_numeration(words: list) -> list:
     :param words: A list of strings.
     :return: List of string with numeration.
     """
-    pass
+    numeration = {}
+    result =[]
+    # Iterate through the words and add the numeration to the dictionary
+    for word in words:
+        lower_word = word.lower()
+        if lower_word in numeration:
+            numeration[lower_word] += 1
+            result.append(word + "#" + str(numeration[lower_word]))
+        else:
+            numeration[lower_word] = 1
+            result.append(f"{word}#{numeration[lower_word]}")
+    return result
 
-print(min_diff([1, 2, 3, 4, 5, 3]))
-print(min_diff([1, 3, 3, 4, 1, 4]))
-print(min_diff([0, 1, 2, 0]))
-print(min_diff([1, 100, 102, 2]))
-print(min_diff([123, 0, 122]))
+
+print(word_numeration(["tere", "tere", "tulemast"]))
+print(word_numeration(["Tere", "tere", "tulemast"]))
+print(word_numeration(["Tere", "tere", "tulemast", "no", "tere", "TERE"]))
+
