@@ -33,20 +33,15 @@ def sum_elements_around_last_three(nums: list) -> int:
     :param nums: given list of ints
     :return: sum of elements before and after last 3
     """
-    if nums[-1] == 3 and nums.count(3) == 1:
-        return 0
-    if 3 not in nums:
-        return 0
-    if not nums:
-        return 0
-    reverselist = nums[::-1]
-    for count, value in enumerate(reverselist):
-        if value == 3 and nums[-1] != 3:
-            return nums[count - 1] + nums[count + 1]
-        elif value == 3 and nums[-1] == 3:
-            for i in nums[count:]:
-                if i == 3:
-                    return nums[count - 1] + nums[count + 1]
+    index = None
+    for i in range(len(nums) - 2, -1, -1):
+        if nums[i] == 3:
+            index = i
+            break
+    if index is not None:
+        if index > 0 and index < len(nums) - 1:
+            return nums[index - 1] + nums[index + 1]
+    return 0
 
 
 
