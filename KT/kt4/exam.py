@@ -101,7 +101,25 @@ def create_dictionary_from_directed_string_pairs(pairs: list) -> dict:
     create_dictionary_from_directed_string_pairs(["1>1", "1>2", "1>1"]) =>
     {"1": ["1", "2"]}
     """
-    pass
+    result = {}
+    for pair in pairs:
+        if ">" in pair:
+            key, value = pair.split(">")
+            if key not in result:
+                result[key] = [value]
+            else:
+                if value not in result[key]:
+                    result[key].append(value)
+        if "<" in pair:
+            key, value = pair.split("<")
+            if value not in result:
+                result[value] = [key]
+            else:
+                if key not in result[value]:
+                    result[value].append(key)
+    return result
 
-print(max_block("hoopla"))
-print(max_block("abbCCCddBBBxx"))
+
+print(create_dictionary_from_directed_string_pairs(["a>b", "a>c"]))
+print(create_dictionary_from_directed_string_pairs(["a>b", "a<b"]))
+print(create_dictionary_from_directed_string_pairs(["1>1", "1>2", "1>1"]))
