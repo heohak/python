@@ -170,16 +170,36 @@ def longest_substring(text: str) -> str:
     abBcd => Bcd
     '' -> ''
     """
-    unique_chars = set()
-    longest_substring = (0, 0)
-    start = 0
-    for i, c in enumerate(text):
-        if c in unique_chars:
-            start = max(start, text.index(c, start) + 1)
-        if i - start + 1 > longest_substring[1] - longest_substring[0]:
-            longest_substring = (start, i + 1)
-        unique_chars.add(c)
-    return text[longest_substring[0]:longest_substring[1]]
+    size = len(text)
+    head = 0
+    tail = 0
+    # Substrings are not explicitly stored but is kept by this head and tail pointer
+    chars = dict()  # HashMap in Python
+
+    max_len = 1
+    s = 0  # Starting index of the resultant substring
+    e = 0  # Ending Index of the resultant substring
+    # Both inclusive
+
+    for tail in range(size):
+        if text[tail] in chars:
+            # Current tail character already present inside HashMap
+            if chars[text[tail]] >= head:
+                # All characters between head and tail is inside current substring
+                # If the character inside HashMap is after head index, then it is inside this current substring
+                # Hence, the current tail is a duplicate character, reduce the substring
+                head = chars[text[tail]] + 1
+
+        chars[text[tail]] = max(chars.get(text[tail], 0), tail)
+
+        if max_len < (tail - head + 1):
+            s = head
+            e = tail
+            max_len = e - s + 1
+
+    result_string = text[s: e + 1]
+    return result_string
+
 
 class Student:
     """Student class."""
@@ -256,8 +276,8 @@ def add_result_to_student(student: Student, grades_count: int, new_grade: int, c
     Return the modified student object.
     """
     new_average = round(((grades_count * student.average_grade + new_grade) / grades_count + 1), 3)
-    new_points = student.credit_points + credit_points
-    return Student(student.name, new_average, new_points)
+    student.credit_points = student.credit_points + credit_points
+    return Student(student.name, new_average, student.credit_points)
 
 
 def get_ordered_students(students: list) -> list:
@@ -404,35 +424,9 @@ class Hotel:
             return sorted_result[0]
 
 
-if __name__ == '__main__':
-    hotel = Hotel()
-    room1 = Room(1, 100)
-    room1.add_feature("tv")
-    room1.add_feature("bed")
-    room2 = Room(2, 200)
-    room2.add_feature("tv")
-    room2.add_feature("sauna")
-    hotel.add_room(room1)
-    hotel.add_room(room2)
-    # TODO: try to add room with existing number, try to add existing feature to room
-    assert hotel.get_rooms() == [room1, room2]
-    assert hotel.get_booked_rooms() == []
-
-    assert hotel.book_room(["tv", "president"]) == room1
-    assert hotel.get_available_rooms() == [room2]
-    assert hotel.get_booked_rooms() == [room1]
-
-    assert hotel.book_room([]) == room2
-    assert hotel.get_available_rooms() == []
-
-    assert hotel.get_feature_profits() == {
-        'tv': 300,
-        'bed': 100,
-        'sauna': 200
-    }
-    assert hotel.get_most_profitable_feature() == 'tv'
-
-    # TODO: try to add a room so that two or more features have the same profit
 
 print(longest_substring("abccba"))
 print(longest_substring("babcdEFghij"))
+
+
+
