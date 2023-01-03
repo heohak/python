@@ -170,36 +170,16 @@ def longest_substring(text: str) -> str:
     abBcd => Bcd
     '' -> ''
     """
-    size = len(text)
-    head = 0
-    tail = 0
-    # Substrings are not explicitly stored but is kept by this head and tail pointer
-    chars = dict()  # HashMap in Python
-
-    max_len = 1
-    s = 0  # Starting index of the resultant substring
-    e = 0  # Ending Index of the resultant substring
-    # Both inclusive
-
-    for tail in range(size):
-        if text[tail] in chars:
-            # Current tail character already present inside HashMap
-            if chars[text[tail]] >= head:
-                # All characters between head and tail is inside current substring
-                # If the character inside HashMap is after head index, then it is inside this current substring
-                # Hence, the current tail is a duplicate character, reduce the substring
-                head = chars[text[tail]] + 1
-
-        chars[text[tail]] = max(chars.get(text[tail], 0), tail)
-
-        if max_len < (tail - head + 1):
-            s = head
-            e = tail
-            max_len = e - s + 1
-
-    result_string = text[s: e + 1]
-    return result_string
-
+    unique_chars = set()
+    longest_substring = (0, 0)
+    start = 0
+    for i, c in enumerate(text):
+        if c in unique_chars:
+            start = max(start, text.index(c, start) + 1)
+        if i - start + 1 > longest_substring[1] - longest_substring[0]:
+            longest_substring = (start, i + 1)
+        unique_chars.add(c)
+    return text[longest_substring[0]:longest_substring[1]]
 
 class Student:
     """Student class."""
